@@ -1041,6 +1041,20 @@
       line-height: 1.6;
     }
 
+    .wb-error-box {
+      display: none;
+      padding: 1.2rem 1.4rem;
+      background: #fef2f2;
+      border: 1.5px solid #ef4444;
+      border-radius: 12px;
+      color: #991b1b;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-top: 1rem;
+    }
+
     /* Scroll Reveal Engine */
     .wb-scroll-reveal {
       opacity: 0;
@@ -1286,7 +1300,7 @@
 
             <!-- Action Buttons with High-Contrast Visible Text -->
             <div class="wb-button-cluster">
-              <button type="button" class="wb-action-btn-primary" onclick="openNotifyModal('Upcoming Webinars')">
+              <button type="button" class="wb-action-btn-primary" onclick="openNotifyModal('Beyond the Static Report: Designing Dynamic M&E Frameworks for Scalable Social Impact', 'Thursday, November 12, 2026', '4:00 PM – 5:00 PM IST')">
                 <span>Register for Announcements</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </button>
@@ -1525,21 +1539,27 @@
       </p>
 
       <form id="suggestTopicForm" onsubmit="handleSuggestSubmit(event)">
+        <!-- Honeypot anti-spam field (hidden from legitimate users) -->
+        <div style="position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+          <input type="text" name="_hp_topic" id="suggestHoneypot" tabindex="-1" autocomplete="off">
+        </div>
+
         <div class="wb-form-row">
           <label class="wb-input-label" for="suggestName">Your Name</label>
-          <input type="text" id="suggestName" class="wb-text-field" placeholder="Full name" required>
+          <input type="text" id="suggestName" class="wb-text-field" placeholder="Full name" maxlength="100" required>
         </div>
         <div class="wb-form-row">
           <label class="wb-input-label" for="suggestEmail">Email Address</label>
-          <input type="email" id="suggestEmail" class="wb-text-field" placeholder="name@organisation.org" required>
+          <input type="email" id="suggestEmail" class="wb-text-field" placeholder="name@organisation.org" maxlength="150" required>
         </div>
         <div class="wb-form-row">
           <label class="wb-input-label" for="suggestIdea">Topic Idea or Collaboration Proposal</label>
-          <textarea id="suggestIdea" class="wb-textarea-field" placeholder="Share the question, challenge, or topic you would like explored..." required></textarea>
+          <textarea id="suggestIdea" class="wb-textarea-field" placeholder="Share the question, challenge, or topic you would like explored..." maxlength="3000" required></textarea>
         </div>
-        <button type="submit" class="wb-submit-btn-full">
-          <span>Submit Suggestion ↗</span>
+        <button type="submit" class="wb-submit-btn-full" id="suggestSubmitBtn">
+          <span id="suggestSubmitBtnText">Submit Suggestion ↗</span>
         </button>
+        <div id="suggestErrorNotice" class="wb-error-box"></div>
       </form>
 
       <div id="suggestSuccessNotice" class="wb-confirmation-box">
@@ -1569,12 +1589,13 @@
           <input type="email" id="notifyEmail" class="wb-text-field" placeholder="name@organisation.org" required>
         </div>
         <div class="wb-form-row">
-          <label class="wb-input-label" for="notifyPhone">Phone / WhatsApp Number</label>
-          <input type="tel" id="notifyPhone" class="wb-text-field" placeholder="+91 98765 43210" required>
+          <label class="wb-input-label" for="notifyPhone">Phone / WhatsApp Number (Optional)</label>
+          <input type="tel" id="notifyPhone" class="wb-text-field" placeholder="+91 98765 43210">
         </div>
-        <button type="submit" id="notifySubmitBtn" class="wb-submit-btn-full">
-          <span>Confirm Details ↗</span>
+        <button type="submit" class="wb-submit-btn-full" id="notifySubmitBtn">
+          <span id="notifySubmitBtnText">Confirm Registration &amp; Send Mail ↗</span>
         </button>
+        <div id="notifyErrorNotice" class="wb-error-box"></div>
       </form>
 
       <div id="notifySuccessNotice" class="wb-confirmation-box">
@@ -1785,6 +1806,11 @@
       modal.classList.add('is-active');
       document.getElementById('suggestTopicForm').style.display = 'block';
       document.getElementById('suggestSuccessNotice').style.display = 'none';
+      const errorNotice = document.getElementById('suggestErrorNotice');
+      if (errorNotice) {
+        errorNotice.style.display = 'none';
+        errorNotice.innerHTML = '';
+      }
     }
 
     function closeSuggestModal(e) {
@@ -1794,61 +1820,140 @@
 
     async function handleSuggestSubmit(e) {
       e.preventDefault();
-      const form = document.getElementById('suggestTopicForm');
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalBtnHTML = submitBtn ? submitBtn.innerHTML : 'Submit Suggestion ↗';
+      const nameInput = document.getElementById('suggestName');
+      const emailInput = document.getElementById('suggestEmail');
+      const ideaInput = document.getElementById('suggestIdea');
+      const honeypot = document.getElementById('suggestHoneypot');
+      const submitBtn = document.getElementById('suggestSubmitBtn');
+      const btnText = document.getElementById('suggestSubmitBtnText');
+      const errorNotice = document.getElementById('suggestErrorNotice');
+      const successNotice = document.getElementById('suggestSuccessNotice');
 
-      const name = document.getElementById('suggestName')?.value.trim();
-      const email = document.getElementById('suggestEmail')?.value.trim();
-      const idea = document.getElementById('suggestIdea')?.value.trim();
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const idea = ideaInput ? ideaInput.value.trim() : '';
+      const _hp_topic = honeypot ? honeypot.value : '';
 
-      if (!name || !email || !idea) return;
+      // Client-side validation
+      if (!name) {
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please enter your full name.';
+          errorNotice.style.display = 'block';
+        }
+        nameInput?.focus();
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please provide a valid email address.';
+          errorNotice.style.display = 'block';
+        }
+        emailInput?.focus();
+        return;
+      }
+
+      if (!idea || idea.length < 10) {
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please share a bit more detail about your suggested topic (at least 10 characters).';
+          errorNotice.style.display = 'block';
+        }
+        ideaInput?.focus();
+        return;
+      }
+
+      // Clear previous error
+      if (errorNotice) {
+        errorNotice.style.display = 'none';
+        errorNotice.innerHTML = '';
+      }
+
+      // Set In-Flight Loading State (prevent double-submit)
+      if (submitBtn) submitBtn.disabled = true;
+      const originalText = btnText ? btnText.innerText : 'Submit Suggestion ↗';
+      if (btnText) btnText.innerText = 'Sending Suggestion...';
 
       try {
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = 'Submitting... ⏳';
+        // 1. Try to record suggestion in Supabase if client available
+        try {
+          const supabase = window.getSupabase ? window.getSupabase() : null;
+          if (supabase) {
+            await supabase.from('contact_messages').insert([
+              {
+                name: name,
+                email: email,
+                phone: 'Not provided (Webinar Suggestion)',
+                message: `[Webinar Topic Suggestion / Collaboration]\n${idea}`
+              }
+            ]);
+          }
+        } catch (dbErr) {
+          console.warn('Supabase topic suggestion sync warning:', dbErr);
         }
 
-        const supabase = window.getSupabase ? window.getSupabase() : null;
-        if (!supabase) throw new Error("Database client not available.");
+        // 2. Dispatch email notification via server API
+        const response = await fetch('/api/suggest-topic', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, email, idea, _hp_topic })
+        });
 
-        const { error } = await supabase
-          .from('contact_messages')
-          .insert([
-            {
-              name: name,
-              email: email,
-              phone: 'Not provided (Webinar Suggestion)',
-              message: `[Webinar Topic Suggestion / Collaboration]\n${idea}`
-            }
-          ]);
+        const data = await response.json();
 
-        if (error) throw error;
+        if (response.ok && data.success) {
+          document.getElementById('suggestTopicForm').style.display = 'none';
+          if (successNotice) {
+            successNotice.innerHTML = `
+              <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Suggestion Received!</div>
+              <div>Thank you for sharing your perspective, <strong>${escapeHtml(name)}</strong>! The Ethyra team has received your topic idea.</div>
+            `;
+            successNotice.style.display = 'block';
+          }
 
-        form.style.display = 'none';
-        document.getElementById('suggestSuccessNotice').style.display = 'block';
-        setTimeout(() => {
-          closeSuggestModal();
-          form.reset();
-        }, 3500);
+          if (nameInput) nameInput.value = '';
+          if (emailInput) emailInput.value = '';
+          if (ideaInput) ideaInput.value = '';
+          if (honeypot) honeypot.value = '';
+
+          setTimeout(() => {
+            closeSuggestModal();
+          }, 4000);
+        } else {
+          throw new Error(data.error || 'Failed to submit suggestion. Please try again.');
+        }
       } catch (err) {
-        console.error("Topic suggestion error:", err);
-        alert("Could not submit suggestion. Please try again later.");
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHTML;
+        console.error('Topic suggestion error:', err);
+        if (errorNotice) {
+          errorNotice.innerHTML = `<strong>Submission Alert:</strong> ${escapeHtml(err.message)}`;
+          errorNotice.style.display = 'block';
         }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.innerText = originalText;
       }
     }
 
-    function openNotifyModal(context) {
+    function openNotifyModal(context, date, time) {
       const modal = document.getElementById('notifyModal');
-      document.getElementById('notifyModalTitle').innerText = context || 'Webinar Registration';
+      const titleElem = document.getElementById('notifyModalTitle');
+      const selectedTitle = context || 'Beyond the Static Report: Designing Dynamic M&E Frameworks for Scalable Social Impact';
+      
+      if (titleElem) titleElem.innerText = selectedTitle;
+      modal.dataset.webinarTitle = selectedTitle;
+      modal.dataset.webinarDate = date || 'Thursday, November 12, 2026';
+      modal.dataset.webinarTime = time || '4:00 PM – 5:00 PM IST';
+
       modal.classList.add('is-active');
       document.getElementById('notifyForm').style.display = 'block';
       document.getElementById('notifySuccessNotice').style.display = 'none';
+      const errorNotice = document.getElementById('notifyErrorNotice');
+      if (errorNotice) {
+        errorNotice.style.display = 'none';
+        errorNotice.innerHTML = '';
+      }
     }
 
     function closeNotifyModal(e) {
@@ -1858,59 +1963,122 @@
 
     async function handleNotifySubmit(e) {
       e.preventDefault();
-      const form = document.getElementById('notifyForm');
+      const nameInput = document.getElementById('notifyName');
+      const emailInput = document.getElementById('notifyEmail');
+      const phoneInput = document.getElementById('notifyPhone');
       const submitBtn = document.getElementById('notifySubmitBtn');
-      const originalBtnHTML = submitBtn ? submitBtn.innerHTML : 'Confirm Details ↗';
+      const btnText = document.getElementById('notifySubmitBtnText');
+      const errorNotice = document.getElementById('notifyErrorNotice');
+      const successNotice = document.getElementById('notifySuccessNotice');
+      const modal = document.getElementById('notifyModal');
 
-      const name = document.getElementById('notifyName')?.value.trim();
-      const email = document.getElementById('notifyEmail')?.value.trim();
-      const phone = document.getElementById('notifyPhone')?.value.trim();
-      const topic = document.getElementById('notifyModalTitle')?.innerText || 'Webinar Registration';
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const webinarTitle = modal.dataset.webinarTitle || document.getElementById('notifyModalTitle')?.innerText || 'Beyond the Static Report: Designing Dynamic M&E Frameworks for Scalable Social Impact';
+      const webinarDate = modal.dataset.webinarDate || 'Thursday, November 12, 2026';
+      const webinarTime = modal.dataset.webinarTime || '4:00 PM – 5:00 PM IST';
 
-      if (!name || !email || !phone) return;
+      if (!name) {
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please enter your full name.';
+          errorNotice.style.display = 'block';
+        }
+        nameInput?.focus();
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please provide a valid email address.';
+          errorNotice.style.display = 'block';
+        }
+        emailInput?.focus();
+        return;
+      }
+
+      // Loading state
+      if (errorNotice) {
+        errorNotice.style.display = 'none';
+        errorNotice.innerHTML = '';
+      }
+      if (submitBtn) submitBtn.disabled = true;
+      const originalText = btnText ? btnText.innerText : 'Confirm Registration & Send Mail ↗';
+      if (btnText) btnText.innerText = 'Sending Registration Details...';
 
       try {
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = 'Registering... ⏳';
+        // 1. Try to save registration in Supabase (if available)
+        try {
+          const supabase = window.getSupabase ? window.getSupabase() : null;
+          if (supabase) {
+            await supabase.from('webinar_registrations').insert([
+              {
+                full_name: name,
+                email: email,
+                phone: phone || null,
+                webinar_topic: webinarTitle
+              }
+            ]);
+          }
+        } catch (dbErr) {
+          console.warn('Supabase webinar registration sync warning:', dbErr);
         }
 
-        const supabase = window.getSupabase ? window.getSupabase() : null;
-        if (!supabase) throw new Error("Database client not available.");
+        // 2. Dispatch confirmation email with webinar details
+        const response = await fetch('/api/register-webinar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            webinarTitle,
+            webinarDate,
+            webinarTime
+          })
+        });
 
-        const { error } = await supabase
-          .from('webinar_registrations')
-          .insert([
-            {
-              full_name: name,
-              email: email,
-              phone: phone,
-              webinar_topic: topic
-            }
-          ]);
+        const data = await response.json();
 
-        if (error) throw error;
+        if (response.ok && data.success) {
+          document.getElementById('notifyForm').style.display = 'none';
+          if (successNotice) {
+            successNotice.innerHTML = `
+              <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Registration Confirmed!</div>
+              <div>A confirmation email with webinar details has been sent to <strong>${escapeHtml(email)}</strong>.</div>
+              <div style="margin-top: 0.6rem; font-size: 0.88rem; color: #047857;">Please check your inbox (and spam/promotions folder).</div>
+            `;
+            successNotice.style.display = 'block';
+          }
+          if (nameInput) nameInput.value = '';
+          if (emailInput) emailInput.value = '';
+          if (phoneInput) phoneInput.value = '';
 
-        form.style.display = 'none';
-        const notice = document.getElementById('notifySuccessNotice');
-        if (notice) {
-          notice.style.display = 'block';
-          notice.innerText = `Registration confirmed for ${name}! Details saved to Ethyra database.`;
+          setTimeout(() => {
+            closeNotifyModal();
+          }, 5000);
+        } else {
+          throw new Error(data.error || 'Failed to send registration confirmation email.');
         }
-
-        setTimeout(() => {
-          closeNotifyModal();
-          form.reset();
-        }, 3500);
       } catch (err) {
-        console.error("Webinar registration error:", err);
-        alert("Registration failed. Please check your network connection or try again.");
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHTML;
+        console.error('Registration error:', err);
+        if (errorNotice) {
+          errorNotice.innerHTML = `<strong>Registration Alert:</strong> ${escapeHtml(err.message)}`;
+          errorNotice.style.display = 'block';
         }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.innerText = originalText;
       }
+    }
+
+    function escapeHtml(str) {
+      return (str || '').replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+      });
     }
 
     window.addEventListener('keydown', (e) => {

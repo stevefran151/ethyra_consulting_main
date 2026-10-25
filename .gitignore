@@ -4,5 +4,5 @@ package-lock.json
 push-*.txt
 wp-content/
 scratch/
-
-
+.env
+.env.local

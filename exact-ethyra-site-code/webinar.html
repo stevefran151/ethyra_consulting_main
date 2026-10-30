@@ -1588,12 +1588,17 @@
           <label class="wb-input-label" for="notifyEmail">Corporate / Professional Email</label>
           <input type="email" id="notifyEmail" class="wb-text-field" placeholder="name@organisation.org" required>
         </div>
+<<<<<<< Updated upstream
         <div class="wb-form-row">
           <label class="wb-input-label" for="notifyPhone">Phone / WhatsApp Number (Optional)</label>
           <input type="tel" id="notifyPhone" class="wb-text-field" placeholder="+91 98765 43210">
         </div>
         <button type="submit" class="wb-submit-btn-full" id="notifySubmitBtn">
           <span id="notifySubmitBtnText">Confirm Registration &amp; Send Mail ↗</span>
+=======
+        <button type="submit" class="wb-submit-btn-full" id="notifySubmitBtn">
+          <span id="notifySubmitBtnText">Confirm Details &amp; Send Mail ↗</span>
+>>>>>>> Stashed changes
         </button>
         <div id="notifyErrorNotice" class="wb-error-box"></div>
       </form>
@@ -1829,41 +1834,66 @@
       const errorNotice = document.getElementById('suggestErrorNotice');
       const successNotice = document.getElementById('suggestSuccessNotice');
 
+<<<<<<< Updated upstream
       const name = nameInput ? nameInput.value.trim() : '';
       const email = emailInput ? emailInput.value.trim() : '';
       const idea = ideaInput ? ideaInput.value.trim() : '';
+=======
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const idea = ideaInput.value.trim();
+>>>>>>> Stashed changes
       const _hp_topic = honeypot ? honeypot.value : '';
 
       // Client-side validation
       if (!name) {
+<<<<<<< Updated upstream
         if (errorNotice) {
           errorNotice.innerHTML = '<strong>Validation Error:</strong> Please enter your full name.';
           errorNotice.style.display = 'block';
         }
         nameInput?.focus();
+=======
+        errorNotice.innerHTML = '<strong>Validation Error:</strong> Please enter your full name.';
+        errorNotice.style.display = 'block';
+        nameInput.focus();
+>>>>>>> Stashed changes
         return;
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!email || !emailRegex.test(email)) {
+<<<<<<< Updated upstream
         if (errorNotice) {
           errorNotice.innerHTML = '<strong>Validation Error:</strong> Please provide a valid email address.';
           errorNotice.style.display = 'block';
         }
         emailInput?.focus();
+=======
+        errorNotice.innerHTML = '<strong>Validation Error:</strong> Please provide a valid email address.';
+        errorNotice.style.display = 'block';
+        emailInput.focus();
+>>>>>>> Stashed changes
         return;
       }
 
       if (!idea || idea.length < 10) {
+<<<<<<< Updated upstream
         if (errorNotice) {
           errorNotice.innerHTML = '<strong>Validation Error:</strong> Please share a bit more detail about your suggested topic (at least 10 characters).';
           errorNotice.style.display = 'block';
         }
         ideaInput?.focus();
+=======
+        errorNotice.innerHTML = '<strong>Validation Error:</strong> Please share a bit more detail about your suggested topic (at least 10 characters).';
+        errorNotice.style.display = 'block';
+        ideaInput.focus();
+>>>>>>> Stashed changes
         return;
       }
 
       // Clear previous error
+<<<<<<< Updated upstream
       if (errorNotice) {
         errorNotice.style.display = 'none';
         errorNotice.innerHTML = '';
@@ -1893,6 +1923,17 @@
         }
 
         // 2. Dispatch email notification via server API
+=======
+      errorNotice.style.display = 'none';
+      errorNotice.innerHTML = '';
+
+      // Set In-Flight Loading State (prevent double-submit)
+      submitBtn.disabled = true;
+      const originalText = btnText.innerText;
+      btnText.innerText = 'Sending Suggestion...';
+
+      try {
+>>>>>>> Stashed changes
         const response = await fetch('/api/suggest-topic', {
           method: 'POST',
           headers: {
@@ -1905,6 +1946,7 @@
 
         if (response.ok && data.success) {
           document.getElementById('suggestTopicForm').style.display = 'none';
+<<<<<<< Updated upstream
           if (successNotice) {
             successNotice.innerHTML = `
               <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Suggestion Received!</div>
@@ -1916,6 +1958,18 @@
           if (nameInput) nameInput.value = '';
           if (emailInput) emailInput.value = '';
           if (ideaInput) ideaInput.value = '';
+=======
+          successNotice.innerHTML = `
+            <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Suggestion Received!</div>
+            <div>Thank you for sharing your perspective, <strong>${escapeHtml(name)}</strong>! The Ethyra team has received your topic idea and will be in touch.</div>
+          `;
+          successNotice.style.display = 'block';
+
+          // Clear inputs on success
+          nameInput.value = '';
+          emailInput.value = '';
+          ideaInput.value = '';
+>>>>>>> Stashed changes
           if (honeypot) honeypot.value = '';
 
           setTimeout(() => {
@@ -1926,6 +1980,7 @@
         }
       } catch (err) {
         console.error('Topic suggestion error:', err);
+<<<<<<< Updated upstream
         if (errorNotice) {
           errorNotice.innerHTML = `<strong>Submission Alert:</strong> ${escapeHtml(err.message)}`;
           errorNotice.style.display = 'block';
@@ -1933,6 +1988,14 @@
       } finally {
         if (submitBtn) submitBtn.disabled = false;
         if (btnText) btnText.innerText = originalText;
+=======
+        // Retain user input on error and display actionable alert
+        errorNotice.innerHTML = `<strong>Submission Alert:</strong> ${escapeHtml(err.message)}`;
+        errorNotice.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        btnText.innerText = originalText;
+>>>>>>> Stashed changes
       }
     }
 
@@ -1965,11 +2028,15 @@
       e.preventDefault();
       const nameInput = document.getElementById('notifyName');
       const emailInput = document.getElementById('notifyEmail');
+<<<<<<< Updated upstream
       const phoneInput = document.getElementById('notifyPhone');
+=======
+>>>>>>> Stashed changes
       const submitBtn = document.getElementById('notifySubmitBtn');
       const btnText = document.getElementById('notifySubmitBtnText');
       const errorNotice = document.getElementById('notifyErrorNotice');
       const successNotice = document.getElementById('notifySuccessNotice');
+<<<<<<< Updated upstream
       const modal = document.getElementById('notifyModal');
 
       const name = nameInput ? nameInput.value.trim() : '';
@@ -2026,11 +2093,29 @@
         }
 
         // 2. Dispatch confirmation email with webinar details
+=======
+      const context = document.getElementById('notifyModalTitle').innerText;
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+
+      if (!email) return;
+
+      // Loading state
+      errorNotice.style.display = 'none';
+      errorNotice.innerHTML = '';
+      submitBtn.disabled = true;
+      const originalText = btnText.innerText;
+      btnText.innerText = 'Sending Registration Details...';
+
+      try {
+>>>>>>> Stashed changes
         const response = await fetch('/api/register-webinar', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
+<<<<<<< Updated upstream
           body: JSON.stringify({
             name,
             email,
@@ -2039,12 +2124,16 @@
             webinarDate,
             webinarTime
           })
+=======
+          body: JSON.stringify({ name, email, context })
+>>>>>>> Stashed changes
         });
 
         const data = await response.json();
 
         if (response.ok && data.success) {
           document.getElementById('notifyForm').style.display = 'none';
+<<<<<<< Updated upstream
           if (successNotice) {
             successNotice.innerHTML = `
               <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Registration Confirmed!</div>
@@ -2056,11 +2145,22 @@
           if (nameInput) nameInput.value = '';
           if (emailInput) emailInput.value = '';
           if (phoneInput) phoneInput.value = '';
+=======
+          successNotice.innerHTML = `
+            <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Registration Confirmed!</div>
+            <div>A detailed confirmation and webinar syllabus has been sent to <strong>${escapeHtml(email)}</strong> via Gmail SMTP.</div>
+            <div style="margin-top: 0.6rem; font-size: 0.88rem; color: #047857;">Please check your inbox (and spam/promotions folder).</div>
+          `;
+          successNotice.style.display = 'block';
+          nameInput.value = '';
+          emailInput.value = '';
+>>>>>>> Stashed changes
 
           setTimeout(() => {
             closeNotifyModal();
           }, 5000);
         } else {
+<<<<<<< Updated upstream
           throw new Error(data.error || 'Failed to send registration confirmation email.');
         }
       } catch (err) {
@@ -2072,6 +2172,17 @@
       } finally {
         if (submitBtn) submitBtn.disabled = false;
         if (btnText) btnText.innerText = originalText;
+=======
+          throw new Error(data.error || 'Failed to send registration email. Please check your credentials.');
+        }
+      } catch (err) {
+        console.error('Registration error:', err);
+        errorNotice.innerHTML = `<strong>Registration Alert:</strong> ${escapeHtml(err.message)}`;
+        errorNotice.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        btnText.innerText = originalText;
+>>>>>>> Stashed changes
       }
     }
 

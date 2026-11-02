@@ -51,6 +51,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -59,6 +61,8 @@ body {
   color: var(--slate-800);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -108,7 +112,7 @@ body {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 100000;
   width: 100%;
   padding: 1.25rem 2rem;
   transition: var(--transition-smooth);
@@ -1398,7 +1402,8 @@ body {
 }
 
 .service-flip-card:hover .service-flip-inner,
-.service-flip-card:focus-within .service-flip-inner {
+.service-flip-card:focus-within .service-flip-inner,
+.service-flip-card.is-flipped .service-flip-inner {
   transform: rotateY(180deg);
 }
 
@@ -1833,18 +1838,47 @@ body {
 }
 
 @media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-  }
-  
   .site-header {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
   }
   
   .header-container {
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
+    gap: 0.75rem;
   }
-  
+
+  .brand-logo-img {
+    height: 34px !important;
+    max-width: 140px !important;
+  }
+
+  .nav-menu {
+    display: none !important;
+  }
+
+  .mobile-nav-toggle {
+    display: flex !important;
+  }
+
+  .mobile-nav-drawer {
+    display: block;
+  }
+
+  .header-actions {
+    gap: 0.6rem;
+  }
+
+  .header-actions .vs-magnetic-button {
+    padding: 0.48rem 0.95rem;
+    font-size: 0.84rem;
+    gap: 0.35rem;
+  }
+
+  .header-actions .vs-magnetic-button svg {
+    width: 13px;
+    height: 13px;
+  }
+
   .hero-stats-strip {
     flex-direction: column;
     gap: 1rem;
@@ -1854,19 +1888,346 @@ body {
   .stat-separator {
     display: none;
   }
+
+  .services-section {
+    padding: 2.25rem 1.25rem 2.5rem !important;
+  }
+
+  .services-section .section-head {
+    margin: 0 auto 1.5rem auto !important;
+    text-align: center !important;
+  }
+
+  .services-section .section-title {
+    font-size: clamp(1.75rem, 6vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+
+  .services-section .section-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+  }
+
+  .service-flip-card,
+  .service-flip-inner {
+    min-height: 340px !important;
+  }
+
+  .service-face--front,
+  .service-face--back {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .why-ethyra-section {
+    padding: 2.25rem 1.25rem 2.5rem !important;
+  }
+
+  .why-ethyra-section .why-head {
+    margin: 0 auto 1.5rem auto !important;
+    text-align: center !important;
+  }
+
+  .why-title {
+    font-size: clamp(1.75rem, 6vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+
+  .why-lead-text {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+  }
+
+  .why-principles-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.15rem !important;
+  }
+
+  .why-systems-grid-bg svg {
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+  }
+
+  .methodology-section {
+    padding: 2.25rem 1.25rem 2.5rem !important;
+  }
+
+  .methodology-section .section-head {
+    margin: 0 auto 1.25rem auto !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .methodology-section .section-title {
+    font-size: clamp(1.75rem, 6vw, 2.2rem) !important;
+    text-align: center !important;
+  }
+
+  .methodology-motto {
+    text-align: center !important;
+  }
+
+  .methodology-lead-text {
+    text-align: center !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    margin: 0 auto 1.25rem !important;
+  }
+
+  .who-we-work-section {
+    padding: 2.25rem 1.25rem 2.5rem !important;
+  }
+
+  .who-we-work-head {
+    margin: 0 auto 1.5rem auto !important;
+    text-align: center !important;
+  }
+
+  .who-title {
+    font-size: clamp(1.75rem, 6vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+
+  .who-lead-text {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+  }
   
   .cta-banner-box {
-    padding: 3rem 1.75rem;
+    padding: 2.25rem 1.5rem;
+  }
+
+  .site-footer {
+    padding: 2.25rem 1.25rem 1.75rem !important;
   }
   
   .footer-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+    margin-bottom: 1.75rem !important;
   }
   
   .footer-bottom {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
     text-align: center;
   }
 }
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .header-container {
+    padding: 0.45rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .brand-logo-img {
+    height: 30px !important;
+    max-width: 120px !important;
+  }
+
+  .header-actions {
+    gap: 0.4rem;
+  }
+
+  .header-actions .vs-magnetic-button {
+    padding: 0.42rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .header-actions .auth-nav-btn {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   ETHYRA CONSULTING SERVICES — BOY PUSH CURTAIN INTRO
+   Inspired by Huy Phan's award-winning character push curtain reveal.
+   ========================================================================== */
+
+/* Fullscreen Overlay Container */
+.boy-intro-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999999;
+  pointer-events: auto;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  background: transparent;
+}
+
+/* The Sliding Obsidian Curtain Panel */
+.boy-curtain-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  /* Tactile physical curtain shadow cast onto the revealed website */
+  box-shadow: -16px 0 45px rgba(0, 0, 0, 0.9), -2px 0 0 rgba(255, 255, 255, 0.22);
+}
+
+/* Subtle glowing seam on the leading edge */
+.boy-curtain-edge-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.5) 45%,
+    rgba(0, 154, 224, 0.8) 50%,
+    rgba(255, 255, 255, 0.5) 55%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+/* Boy Character Anchor Pinned to the LEFT Edge of the Curtain, Walking along Bottom / Taskbar */
+.boy-character-anchor {
+  position: absolute;
+  bottom: 0;
+  right: 100%; /* Sits immediately to the left of the curtain's left edge */
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 10;
+  overflow: visible;
+  will-change: transform;
+}
+
+/* Hand-drawn Character Sprite (Transparent Animated WebP) */
+.boy-character-sprite {
+  height: clamp(260px, 46vh, 500px);
+  width: auto;
+  display: block;
+  /* Align palms flush with the black curtain line */
+  margin-right: -10px;
+  margin-bottom: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(-10px 14px 28px rgba(0, 0, 0, 0.45));
+}
+
+/* Welcome Greeting on the Black Screen / Curtain */
+.curtain-welcome-wrap {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  pointer-events: none;
+  user-select: none;
+  text-align: center;
+  z-index: 5;
+  width: 90%;
+  max-width: 620px;
+}
+
+.curtain-welcome-sub {
+  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(14px, 1.8vw, 22px);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-left: 0.35em;
+  text-shadow: 0 2px 18px rgba(0, 154, 224, 0.35);
+}
+
+.curtain-welcome-logo {
+  width: 100%;
+  max-width: clamp(280px, 32vw, 460px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 28px rgba(0, 154, 224, 0.3));
+}
+
+/* Top Action Controls on the Curtain */
+.boy-intro-controls {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.boy-intro-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.boy-intro-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.boy-intro-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.boy-intro-btn:hover svg {
+  transform: translateX(2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .boy-character-sprite {
+    height: clamp(240px, 44vh, 420px);
+  }
+  .boy-intro-controls {
+    top: 16px;
+    right: 16px;
+  }
+}
+

@@ -1040,27 +1040,38 @@
 }
 
 @media (max-width: 640px) {
+  .contact-hero-wrap {
+    padding: 85px 16px 60px !important;
+  }
   .contact-hero-title {
-    font-size: 32px !important;
+    font-size: 30px !important;
   }
   .contact-form-grid {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
   }
   .form-group.full-width {
     grid-column: span 1;
   }
+  .form-input,
+  .form-textarea {
+    font-size: 16px !important;
+  }
+  .contact-submit-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
   .contact-section-01 {
-    padding: 32px 20px;
+    padding: 28px 16px !important;
   }
   .section-title {
-    font-size: 26px !important;
+    font-size: 24px !important;
   }
   .card-title {
-    font-size: 23px !important;
+    font-size: 21px !important;
   }
   .tagline-text {
-    font-size: 20px !important;
+    font-size: 19px !important;
   }
   .support-chips-grid {
     flex-direction: column;

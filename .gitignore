@@ -3,4 +3,6 @@ package-lock.json
 *.log
 push-*.txt
 wp-content/
-
+scratch/
+.env
+.env.local

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services &ndash; Programme Design, M&amp;E &amp; Social Impact Assessment | Ethyra Consulting</title>
+  <meta name="description" content="Ethyra helps CSR foundations, institutions and development organisations start with the right problem, track progress, verify attribution and understand what changed. Design. Deliver. Demonstrate.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/clean_ethyra_logo.png">
+
+  <!-- Flag JS early so hidden start-states only apply when scripts will reveal them -->
+  <script>document.documentElement.classList.add('svc-js');</script>
+
+  <!-- Stylesheets (same order as index.html, then the page layer) -->
+  <link rel="stylesheet" href="css/site-header.css">
+  <link rel="stylesheet" href="css/landing-page.css?v=8.0">
+  <link rel="stylesheet" href="css/magnetic-button.css">
+  <link rel="stylesheet" href="css/dropping-cards.css?v=2.0">
+  <link rel="stylesheet" href="css/svc-scroll-hero.css?v=1.0">
+  <link rel="stylesheet" href="css/services-page.css?v=1.0">
+  <link rel="stylesheet" href="css/faq-accordion.css">
+  <link rel="stylesheet" href="css/auth-modal.css">
+</head>
+<body>
+
+  <!-- Ambient Blueprint Grid & Glow Canvas -->
+  <div class="page-bg-canvas" aria-hidden="true">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+  </div>
+
+  <!-- ==========================================================================
+       Sticky Header Navbar with Official Ethyra Logo (copied from index.html)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo-link" aria-label="Ethyra Consulting Services Home">
+        <img src="assets/ethyra-official-logo.png?v=8.0" alt="Ethyra — Innovating Social Impact" class="brand-logo-img">
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Home</a></li>
+          <li><a href="about-us.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">About Us</a></li>
+          <li><a href="services.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav active" aria-current="page">Services</a></li>
+          <li><a href="webinar.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Webinar</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contact-us.html" class="vs-magnetic-button" aria-label="Get in Touch">
+          Get in Touch
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8h9M8.5 4 12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         1. Page Hero (lighter than the home hero: no storybook, no loupe)
+         ========================================================================== -->
+    <section id="svc-hero" class="svc-hero svc-sh-hero" aria-labelledby="svc-hero-title">
+      <!-- 220vh scroll track for the scrubbed shrinking effect -->
+      <div class="svc-sh-track" id="svcShTrack">
+        <!-- Sticky viewport stage: stays fixed while scrolling through the track -->
+        <div class="svc-sh-stage" id="svcShStage">
+          
+          <!-- Central Shrinking Hero Panel -->
+          <div class="svc-sh-panel" id="svcShPanel">
+            <!-- Background media with video and blueprint fallback -->
+            <div class="svc-sh-media-wrap" id="svcShMediaWrap" aria-hidden="true">
+              <video class="svc-sh-video" id="svcShVideo" muted loop playsinline preload="auto" poster="assets/service-advisory.jpg">
+                <source src="assets/videos/services-hero.mp4" type="video/mp4">
+              </video>
+              <div class="svc-sh-media-fallback"></div>
+              <div class="svc-sh-media-scrim"></div>
+              <div class="svc-sh-media-glow"></div>
+            </div>
+
+            <!-- Hero headline, kicker, and magnetic action buttons -->
+            <div class="svc-sh-content" id="svcShContent">
+              <div class="hero-tag-badge" data-svc-hero="kicker">
+                <span class="pulse-indicator"></span>
+                <span>Our Services</span>
+              </div>
+
+              <h1 id="svc-hero-title" class="svc-hero-title">
+                <span class="svc-line" data-svc-hero="line">Good intentions are a start.</span>
+                <span class="svc-line svc-hero-highlight" data-svc-hero="line">
+                  The real question is, what changed?
+                  <svg class="svc-underline" data-svc-hero="underline" viewBox="0 0 280 18" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M3 14C70 4 190 2 277 10" stroke="url(#svc-underline-grad)" stroke-width="5" stroke-linecap="round"/>
+                    <defs>
+                      <linearGradient id="svc-underline-grad" x1="0" y1="0" x2="280" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#009ae0"/>
+                        <stop offset="1" stop-color="#00e5ff"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </span>
+              </h1>
+
+              <p class="svc-hero-sub" data-svc-hero="sub">An activity completed is not the same as a life changed. At Ethyra, we work to close that gap.</p>
+
+              <div class="svc-hero-cta" data-svc-hero="cta">
+                <a href="contact-us.html" class="vs-magnetic-button" data-strength="0.45" data-field="85">
+                  Schedule an Advisory Session
+                  <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8h9M8.5 4 12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="contact-us.html" class="vs-magnetic-button vs-magnetic-button--ghost" data-strength="0.4" data-field="85">
+                  Contact Us
+                  <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8h9M8.5 4 12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Scroll Hint -->
+          <div class="svc-sh-scroll-hint" id="svcShScrollHint" aria-hidden="true">
+            <span class="svc-sh-scroll-text">Scroll to explore disciplines</span>
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ==========================================================================
+         2. Services Overview: 3 flip cards + 1 wide card
+         ========================================================================== -->
+    <section id="svc-overview" class="services-section svc-overview svc-reveal" aria-labelledby="svc-overview-title">
+      <div class="services-container">
+        <div class="section-head">
+          <span class="section-kicker" data-svc-item style="--svc-i:0">Our Core Expertise</span>
+          <h2 id="svc-overview-title" class="section-title" data-svc-item style="--svc-i:1">Start with the right problem. Understand what changed.</h2>
+          <p class="section-subtitle" data-svc-item style="--svc-i:2">
+            Design. Deliver. Demonstrate. Hover or tap a card to see it in detail.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service Card 1: Programme Design -->
+          <div class="service-flip-card flip-card" data-service="1" data-svc-item style="--svc-i:3" data-svc-video="project-design.mp4" tabindex="0">
+            <div class="service-flip-inner flip-card-inner">
+              <div class="service-face service-face--front flip-card-front">
+                <span class="card-watermark" aria-hidden="true">01</span>
+                <div class="card-face-header">
+                  <h3 class="card-front-title">Programme Design</h3>
+                  <p class="card-front-subhead">Start with the problem, not the proposal.</p>
+                </div>
+                <p class="card-front-desc">
+                  A strong programme begins with a clear understanding of the challenge it aims to address. We help organisations translate community needs and stakeholder insights into practical programmes with defined objectives, intended outcomes, and a clear direction for implementation.
+                </p>
+                <div class="card-footer-row">
+                  <div class="accent-color-bar" aria-hidden="true"></div>
+                </div>
+              </div>
+              <div class="service-face service-face--back flip-card-back" style="background-image: url('assets/service-design.jpg');">
+                <div class="flip-card-back-scrim"></div>
+                <div class="flip-card-back-content">
+                  <p class="back-highlight-desc">
+                    A strong programme begins with a clear understanding of the challenge it aims to address. We help organisations translate community needs and stakeholder insights into practical programmes with defined objectives, intended outcomes, and a clear direction for implementation.
+                  </p>
+                  <a class="svc-card-link" href="project-design.html">Discuss Programme Design <span aria-hidden="true">&rarr;</span><span class="svc-sr"> about Programme Design</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Card 2: Monitoring, Evaluation & Learning (MEL) -->
+          <div class="service-flip-card flip-card" data-service="2" data-svc-item style="--svc-i:4" data-svc-video="monitoring-evaluation.mp4" tabindex="0">
+            <div class="service-flip-inner flip-card-inner">
+              <div class="service-face service-face--front flip-card-front">
+                <span class="card-watermark" aria-hidden="true">02</span>
+                <div class="card-face-header">
+                  <h3 class="card-front-title">Monitoring, Evaluation &amp; Learning (MEL)</h3>
+                  <p class="card-front-subhead">Don't wait until the end to learn what could have been improved.</p>
+                </div>
+                <p class="card-front-desc">
+                  Programmes evolve during implementation. Monitoring and evaluation help organisations understand whether activities are progressing as planned, whether intended outcomes are emerging, and where adjustments may be needed. We help establish practical systems to track performance, generate useful evidence, and support timely decisions.
+                </p>
+                <div class="card-footer-row">
+                  <div class="accent-color-bar" aria-hidden="true"></div>
+                </div>
+              </div>
+              <div class="service-face service-face--back flip-card-back" style="background-image: url('assets/service-eval-new.jpg');">
+                <div class="flip-card-back-scrim"></div>
+                <div class="flip-card-back-content">
+                  <p class="back-highlight-desc">
+                    Programmes evolve during implementation. Monitoring and evaluation help organisations understand whether activities are progressing as planned, whether intended outcomes are emerging, and where adjustments may be needed. We help establish practical systems to track performance, generate useful evidence, and support timely decisions.
+                  </p>
+                  <a class="svc-card-link" href="monitoring-evaluation.html">Strengthen Your MEL System <span aria-hidden="true">&rarr;</span><span class="svc-sr"> about Monitoring, Evaluation &amp; Learning</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Card 3: Social Impact Assessment -->
+          <div class="service-flip-card flip-card" data-service="3" data-svc-item style="--svc-i:5" data-svc-video="social-impact-assessment.mp4" tabindex="0">
+            <div class="service-flip-inner flip-card-inner">
+              <div class="service-face service-face--front flip-card-front">
+                <span class="card-watermark" aria-hidden="true">03</span>
+                <div class="card-face-header">
+                  <h3 class="card-front-title">Social Impact<br>Assessment</h3>
+                  <p class="card-front-subhead">Go beyond the numbers. Understand the significance of change.</p>
+                </div>
+                <p class="card-front-desc">
+                  Programme data can show what happened. Understanding the significance of those changes requires a closer look at outcomes, stakeholder experiences, context, and the factors that may have contributed. We conduct research and assessment to help organisations develop a more credible understanding of programme outcomes and their implications for communities.
+                </p>
+                <div class="card-footer-row">
+                  <div class="accent-color-bar" aria-hidden="true"></div>
+                </div>
+              </div>
+              <div class="service-face service-face--back flip-card-back" style="background-image: url('assets/service-eval.jpg');">
+                <div class="flip-card-back-scrim"></div>
+                <div class="flip-card-back-content">
+                  <p class="back-highlight-desc">
+                    Programme data can show what happened. Understanding the significance of those changes requires a closer look at outcomes, stakeholder experiences, context, and the factors that may have contributed. We conduct research and assessment to help organisations develop a more credible understanding of programme outcomes and their implications for communities.
+                  </p>
+                  <a class="svc-card-link" href="social-impact-assessment.html">Discuss an Impact Assessment <span aria-hidden="true">&rarr;</span><span class="svc-sr"> about Social Impact Assessment</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4: wide card -->
+        <article class="svc-wide" data-svc-item style="--svc-i:6" aria-labelledby="svc-wide-title">
+          <div class="svc-wide-copy">
+            <span class="svc-wide-watermark" aria-hidden="true">04</span>
+            <h3 id="svc-wide-title" class="svc-wide-title">Impact Advisory &amp; Dashboards</h3>
+            <p class="svc-wide-sub">Impact Communication</p>
+            <p class="svc-wide-desc">Strategic impact narrative and executive reporting.</p>
+            <div class="svc-wide-links">
+              <a class="svc-card-link" href="impact-communication.html">Learn more <span aria-hidden="true">&rarr;</span><span class="svc-sr"> about Impact Advisory &amp; Dashboards</span></a>
+              <a class="svc-wide-related" href="impact-advisory.html">Related: Impact Advisory</a>
+            </div>
+            <div class="accent-color-bar" aria-hidden="true"></div>
+          </div>
+          <div class="svc-wide-media svc-media" data-svc-video="impact-advisory.mp4">
+            <img src="assets/service-advisory.jpg" alt="Impact advisory and executive reporting" loading="lazy">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. Service deep-dives (alternating image / text rows)
+         ========================================================================== -->
+    <section id="svc-deepdive" class="svc-deepdive" aria-labelledby="svc-deepdive-title">
+      <div class="svc-container">
+        <div class="svc-head svc-reveal">
+          <span class="svc-kicker" data-svc-item style="--svc-i:0">In Detail</span>
+          <h2 id="svc-deepdive-title" class="svc-title" data-svc-item style="--svc-i:1">What each service delivers</h2>
+          <p class="svc-lead" data-svc-item style="--svc-i:2">Ethyra works with CSR foundations, institutions and development organisations.</p>
+        </div>
+
+        <!-- Row 1: Programme Design -->
+        <article id="svc-design" class="svc-row svc-reveal" aria-labelledby="svc-design-title">
+          <div class="svc-media" data-svc-item style="--svc-i:0" data-svc-video="project-design.mp4">
+            <img src="assets/service-design.jpg" alt="Programme design workshop with community priorities" loading="lazy">
+            <span class="svc-media-num" aria-hidden="true">01</span>
+          </div>
+          <div class="svc-row-copy">
+            <span class="svc-row-kicker" data-svc-item style="--svc-i:1">Start with the problem, not the proposal.</span>
+            <h3 id="svc-design-title" class="svc-row-title" data-svc-item style="--svc-i:2">Programme Design</h3>
+            <div class="svc-block" data-svc-item style="--svc-i:3">
+              <h4 class="svc-block-title">What we do</h4>
+              <ul class="svc-list">
+                <li>Community Needs Assessments</li>
+                <li>Stakeholder Consultations</li>
+                <li>Problem Analysis and Prioritisation</li>
+                <li>Theory of Change Development</li>
+                <li>Logical and Results Frameworks</li>
+                <li>Programme Planning and Budgeting</li>
+                <li>Implementation Strategy and Outcome Definition</li>
+              </ul>
+            </div>
+            <div class="svc-block-grid" data-svc-item style="--svc-i:4">
+              <div class="svc-block">
+                <h4 class="svc-block-title">What you gain</h4>
+                <p>A structured programme design grounded in identified needs, with clear objectives, an intended pathway to change, and a practical implementation plan.</p>
+              </div>
+              <div class="svc-block">
+                <h4 class="svc-block-title">Best suited for</h4>
+                <p>Organisations planning a new CSR initiative, reviewing an existing programme, or developing a stronger foundation for social investment.</p>
+              </div>
+            </div>
+            <a class="svc-card-link svc-card-link--dark" href="project-design.html" data-svc-item style="--svc-i:5">Discuss Programme Design <span aria-hidden="true">&rarr;</span><span class="svc-sr"> about Programme Design</span></a>
+          </div>
+        </article>
+
+        <!-- Row 2: Monitoring, Evaluation & Learning (MEL) -->
+        <article id="svc-me" class="svc-row svc-row--flip svc-reveal" aria-labelledby="svc-me-title">
+          <div class="svc-media" data-svc-item style="--svc-i:0" data-svc-video="monitoring-evaluation.mp4">
+            <img src="assets/service-eval-new.jpg" alt="Team reviewing outcome analysis and impact dashboard" loading="lazy">
+            <span class="svc-media-num" aria-hidden="true">02</span>
+          </div>
+          <div class="svc-row-copy">
+            <span class="svc-row-kicker" data-svc-item style="--svc-i:1">Don't wait until the end to learn what could have been improved.</span>
+            <h3 id="svc-me-title" class="svc-row-title" data-svc-item style="--svc-i:2">Monitoring, Evaluation &amp; Learning (MEL)</h3>
+            <div class="svc-block" data-svc-item style="--svc-i:3">
+              <h4 class="svc-block-title">What we do</h4>
+              <ul class="svc-list">
+                <li>Monitoring, Evaluation &amp; Learning Frameworks</li>
+                <li>Indicator and Target Setting</li>
+                <li>Data Collection Tools and Systems</li>
+                <li>Baseline, Midline and Endline Assessments</li>
+                <li>Outcome Tracking and Progress Reviews</li>
+                <li>Data Quality and Performance Analysis</li>
+                <li>Evaluation Reporting and Learning Recommendations</li>
+              </ul>
+            </div>
+            <div class="svc-block-grid" data-svc-item style="--svc-i:4">
+              <div class="svc-block">
+                <h4 class="svc-block-title">What you gain</h4>
+                <p>Better visibility into programme performance, more structured evidence of progress, and actionable insights to strengthen implementation.</p>
+              </div>
+              <div class="svc-block">
+                <h4 class="svc-block-title">Best suited for</h4>
+                <p>Organisations seeking to improve monitoring systems, assess progress against objectives, identify implementation gaps, or build a stronger learning culture.</p>
+              </div>
+            </div>
+            <a class="svc-card-link svc-card-link--dark" href="monitoring-evaluation.html" data-svc-item style="--svc-i:5">Strengthen Your MEL System <span aria-hidden="true">&rarr;</span><span class="svc-sr"> about Monitoring, Evaluation &amp; Learning</span></a>
+          </div>
+        </article>
+
+        <!-- Row 3: Social Impact Assessment -->
+        <article id="svc-sia" class="svc-row svc-reveal" aria-labelledby="svc-sia-title">
+          <div class="svc-media" data-svc-item style="--svc-i:0" data-svc-video="social-impact-assessment.mp4">
+            <img src="assets/service-sia.png" alt="Social impact assessment evidence and stakeholder insight" loading="lazy">
+            <span class="svc-media-num" aria-hidden="true">03</span>
+          </div>
+          <div class="svc-row-copy">
+            <span class="svc-row-kicker" data-svc-item style="--svc-i:1">Go beyond the numbers. Understand the significance of change.</span>
+            <h3 id="svc-sia-title" class="svc-row-title" data-svc-item style="--svc-i:2">Social Impact Assessment</h3>
+            <div class="svc-block" data-svc-item style="--svc-i:3">
+              <h4 class="svc-block-title">What we do</h4>
+              <ul class="svc-list">
+                <li>Social Impact Assessments</li>
+                <li>Beneficiary and Stakeholder Research</li>
+                <li>Qualitative and Quantitative Research</li>
+                <li>Outcome Analysis</li>
+                <li>Contribution Analysis</li>
+                <li>Social Return on Investment (SROI), where appropriate</li>
+                <li>Impact Reporting and Evidence-Based Recommendations</li>
+              </ul>
+            </div>
+            <div class="svc-block-grid" data-svc-item style="--svc-i:4">
+              <div class="svc-block">
+                <h4 class="svc-block-title">What you gain</h4>
+                <p>A clearer picture of the outcomes observed, the experiences of people affected, the intervention's plausible contribution, and the lessons that can inform future decisions.</p>
+              </div>
+              <div class="svc-block">
+                <h4 class="svc-block-title">Best suited for</h4>
+                <p>Organisations seeking to assess programme outcomes, understand social value, strengthen impact reporting, or inform decisions about future investment.</p>
+              </div>
+            </div>
+            <a class="svc-card-link svc-card-link--dark" href="social-impact-assessment.html" data-svc-item style="--svc-i:5">Discuss an Impact Assessment <span aria-hidden="true">&rarr;</span><span class="svc-sr"> about Social Impact Assessment</span></a>
+          </div>
+        </article>
+
+        <!-- Row 4: Impact Advisory & Dashboards -->
+        <article id="svc-advisory" class="svc-row svc-row--flip svc-reveal" aria-labelledby="svc-advisory-title">
+          <div class="svc-media" data-svc-item style="--svc-i:0" data-svc-video="impact-communication.mp4">
+            <img src="assets/service-advisory.jpg" alt="Executive impact reporting and dashboards" loading="lazy">
+            <span class="svc-media-num" aria-hidden="true">04</span>
+          </div>
+          <div class="svc-row-copy">
+            <span class="svc-row-kicker" data-svc-item style="--svc-i:1">Impact Communication</span>
+            <h3 id="svc-advisory-title" class="svc-row-title" data-svc-item style="--svc-i:2">Impact Advisory &amp; Dashboards</h3>
+            <div class="svc-block" data-svc-item style="--svc-i:3">
+              <h4 class="svc-block-title">Outcomes</h4>
+              <ul class="svc-list">
+                <li>A strategic impact narrative</li>
+                <li>Executive reporting</li>
+              </ul>
+            </div>
+            <div class="svc-block-grid" data-svc-item style="--svc-i:4">
+              <div class="svc-block">
+                <h4 class="svc-block-title">Who it's for</h4>
+                <p>CSR foundations, institutions and development organisations.</p>
+              </div>
+            </div>
+            <a class="svc-card-link svc-card-link--dark" href="impact-communication.html" data-svc-item style="--svc-i:5">Learn more <span aria-hidden="true">&rarr;</span><span class="svc-sr"> about Impact Advisory &amp; Dashboards</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. How we work: dropping-cards stack (dropping-cards.js hooks onto
+            .methodology-section, #themeColorBlock and #themeImageCards)
+         ========================================================================== -->
+    <section id="svc-process" class="methodology-section" aria-labelledby="svc-process-title">
+      <div class="methodology-container">
+        <div class="section-head">
+          <span class="section-kicker">How We Work</span>
+          <h2 id="svc-process-title" class="section-title">Design. Deliver. Demonstrate.</h2>
+          <p class="section-subtitle">
+            Three stages, one question: what changed?
+          </p>
+
+          <!-- Palette Mode Switcher -->
+          <div class="stack__theme-toggle" role="group" aria-label="Palette selection">
+            <button class="stack__theme-btn stack__theme-btn--active" id="themeColorBlock" type="button">Brand Color-Block</button>
+            <button class="stack__theme-btn" id="themeImageCards" type="button">Pristine White Deck</button>
+          </div>
+        </div>
+
+        <div class="stack-wrapper">
+          <div class="stack__deck" aria-label="Interactive cards deck" role="region">
+
+            <!-- Stage 1 -->
+            <article class="stack__card" id="svc-stage-1" data-index="0"
+                     style="--c:#002c8b; --ink:#ffffff; --accent:#009ae0; --badge-bg:rgba(0,154,224,0.32); --badge-color:#38bdf8; --num-color:rgba(255,255,255,0.08); --desc-color:rgba(255,255,255,0.85)">
+              <span class="stack__card-watermark" aria-hidden="true">01</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_35.jpg" alt="Design with Precision">
+                  <span class="stack__stage-badge">Stage 1</span>
+                </div>
+                <ul class="stack__list">
+                  <li>Systemic problem formulation</li>
+                  <li>Causal levers</li>
+                  <li>Theory of change</li>
+                  <li>Pre-capital de-risking</li>
+                </ul>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">Design with Precision.</h3>
+                <p class="stack__desc">Systemic problem formulation and a clear theory of change, before capital is committed.</p>
+              </div>
+            </article>
+
+            <!-- Stage 2 -->
+            <article class="stack__card" id="svc-stage-2" data-index="1"
+                     style="--c:#009ae0; --ink:#ffffff; --accent:#002c8b; --badge-bg:rgba(0,44,139,0.32); --badge-color:#ffffff; --num-color:rgba(255,255,255,0.18); --desc-color:rgba(255,255,255,0.92)">
+              <span class="stack__card-watermark" aria-hidden="true">02</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_34.jpg" alt="Deliver with Agility">
+                  <span class="stack__stage-badge">Stage 2</span>
+                </div>
+                <ul class="stack__list">
+                  <li>Continuous monitoring</li>
+                  <li>Early-warning alerts</li>
+                  <li>Field pivots</li>
+                  <li>Mid-flight tuning</li>
+                </ul>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">Deliver with Agility.</h3>
+                <p class="stack__desc">Continuous monitoring and early-warning alerts, so field teams can pivot and tune mid-flight.</p>
+              </div>
+            </article>
+
+            <!-- Stage 3 -->
+            <article class="stack__card" id="svc-stage-3" data-index="2"
+                     style="--c:#ffffff; --ink:#002c8b; --accent:#009ae0; --badge-bg:#e0f2fe; --badge-color:#009ae0; --num-color:rgba(0,44,139,0.08); --desc-color:#475569">
+              <span class="stack__card-watermark" aria-hidden="true">03</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_73.jpg" alt="Demonstrate with Rigour">
+                  <span class="stack__stage-badge">Stage 3</span>
+                </div>
+                <ul class="stack__list">
+                  <li>Counterfactual benchmarking</li>
+                  <li>Attribution models</li>
+                  <li>Verifiable proof</li>
+                  <li>Audit-grade reporting</li>
+                </ul>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">Demonstrate with Rigour.</h3>
+                <p class="stack__desc">Attribution models and counterfactual benchmarks that answer the ultimate question: <em>what changed?</em></p>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- UI controls: Prev, Next & Progress Dots -->
+          <div class="stack__ui">
+            <button class="stack__btn stack__btn--prev" type="button" aria-label="Previous stage">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg>
+            </button>
+            <div class="stack__dots" aria-hidden="true">
+              <span class="stack__dot stack__dot--active"></span>
+              <span class="stack__dot"></span>
+              <span class="stack__dot"></span>
+            </div>
+            <button class="stack__btn stack__btn--next" type="button" aria-label="Next stage">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg>
+            </button>
+          </div>
+
+          <span class="stack__hint">Drag card down or use arrow keys to navigate</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. Services Main FAQ Section
+         ========================================================================== -->
+    <section id="svc-faq" class="svc-faq svc-reveal" aria-labelledby="svc-faq-title">
+      <div class="svc-container svc-faq-container">
+        <div class="svc-head">
+          <span class="svc-kicker" data-svc-item style="--svc-i:0">Frequently Asked Questions</span>
+          <h2 id="svc-faq-title" class="svc-title" data-svc-item style="--svc-i:1">Good questions. Clear answers.</h2>
+        </div>
+
+        <div class="faq-accordion" data-svc-item style="--svc-i:2">
+          <!-- 1. Who does Ethyra work with? -->
+          <details class="faq-details" name="svc-faq">
+            <summary class="faq-summary">
+              <span>Who does Ethyra work with?</span>
+              <span class="faq-summary-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-details-body">
+              <p>We work with corporates, CSR teams, NGOs, and development organisations looking to design stronger programmes, understand progress, and assess social impact.</p>
+            </div>
+          </details>
+
+          <!-- 2. How do we know which service we need? -->
+          <details class="faq-details" name="svc-faq">
+            <summary class="faq-summary">
+              <span>How do we know which service we need?</span>
+              <span class="faq-summary-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-details-body">
+              <p>Start with your question. Need to define the right intervention? Choose CSR Programme Design. Need to track progress? Choose MEL. Want to understand what changed? Choose Social Impact Assessment.</p>
+            </div>
+          </details>
+
+          <!-- 3. Can Ethyra conduct needs, baseline, midline, and endline assessments? -->
+          <details class="faq-details" name="svc-faq">
+            <summary class="faq-summary">
+              <span>Can Ethyra conduct needs, baseline, midline, and endline assessments?</span>
+              <span class="faq-summary-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-details-body">
+              <p>Yes. Needs Assessments help identify community priorities, while baseline, midline, and endline assessments help establish starting conditions and track changes over time.</p>
+            </div>
+          </details>
+
+          <!-- 4. Does Ethyra work with organisations on existing programmes? -->
+          <details class="faq-details" name="svc-faq">
+            <summary class="faq-summary">
+              <span>Does Ethyra work with organisations on existing programmes?</span>
+              <span class="faq-summary-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-details-body">
+              <p>Yes. We can explore ways to strengthen programme design, improve monitoring systems, assess progress, or understand outcomes.</p>
+            </div>
+          </details>
+
+          <!-- 5. How is an engagement scoped? -->
+          <details class="faq-details" name="svc-faq">
+            <summary class="faq-summary">
+              <span>How is an engagement scoped?</span>
+              <span class="faq-summary-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-details-body">
+              <p>We consider your objectives, geography, target population, available data, timeline, and expected deliverables before defining the scope.</p>
+            </div>
+          </details>
+
+          <!-- 6. How can we begin working with Ethyra? -->
+          <details class="faq-details" name="svc-faq">
+            <summary class="faq-summary">
+              <span>How can we begin working with Ethyra?</span>
+              <span class="faq-summary-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-details-body">
+              <p>Tell us about your organisation, the challenge you're facing, and the support you're looking for. We'll discuss the next steps.</p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Footer note & Contact Link -->
+        <div class="svc-faq-footer">
+          <p class="svc-faq-footer-text">Still have a question? <span>Let's talk about it.</span></p>
+          <a href="contact-us.html" class="svc-faq-footer-btn">
+            <span>Contact Ethyra</span>
+            <span class="svc-faq-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. Call to Action Banner
+         ========================================================================== -->
+    <section id="svc-cta" class="cta-section" aria-labelledby="svc-cta-title">
+      <div class="cta-banner-box">
+        <div class="cta-inner">
+          <h2 id="svc-cta-title" class="cta-heading">Ready to measure what truly changed?</h2>
+          <p class="cta-subtext">
+            Good intentions are a start. Partner with Ethyra to design, deliver and demonstrate what changed.
+          </p>
+          <a href="contact-us.html" class="vs-magnetic-button" style="--vs-magnetic-button-bg: #ffffff; --vs-magnetic-button-ink: #002c8b; --vs-magnetic-button-flood: #38bdf8; --vs-magnetic-button-flood-ink: #001848; --vs-magnetic-button-font-size: 1.02rem;">
+            Schedule an Advisory Session
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8h9M8.5 4 12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Global Footer (copied from index.html; two in-page anchors repointed)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <a href="index.html" class="brand-logo-link">
+          <img src="assets/clean_ethyra_logo.png" alt="Ethyra" class="brand-logo-img">
+        </a>
+        <p>
+          Ethyra Consulting Services helps institutions, CSR foundations, and development organisations design stronger social programmes and assess the real difference their investments make.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Services</h4>
+        <ul class="footer-links">
+          <li><a href="project-design.html">Programme &amp; Project Design</a></li>
+          <li><a href="monitoring-evaluation.html">Monitoring &amp; Evaluation</a></li>
+          <li><a href="social-impact-assessment.html">Social Impact Assessment</a></li>
+          <li><a href="impact-communication.html">Impact Advisory &amp; Dashboards</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="webinar.html">Webinars &amp; Masterclasses</a></li>
+          <li><a href="#svc-process">Our Methodology</a></li>
+          <li><a href="index.html#services">Case Outcomes</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:contact@ethyra.com">contact@ethyra.com</a></li>
+          <li><a href="variant-1.html">Interactive SVG Engine</a></li>
+          <li><a href="index.html">3D Video Hero Edition</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ethyra Consulting Services. All rights reserved.</p>
+      <p>Design. Deliver. Demonstrate.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts (order matches index.html, then the page layer) -->
+  <script src="js/landing-page.js?v=8.0"></script>
+  <script src="js/magnetic-button.js"></script>
+  <!-- GSAP 3.12.5 from jsDelivr -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="js/dropping-cards.js?v=2.0"></script>
+  <script src="js/svc-scroll-hero.js?v=1.0"></script>
+  <script src="js/services-page.js?v=1.0"></script>
+  <!-- Supabase SDK & Ethyra Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/site-header.js"></script>
+  <script src="js/auth-controller.js"></script>
+</body>
+</html>

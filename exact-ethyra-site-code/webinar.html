@@ -3,278 +3,1068 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Executive Webinars &amp; Masterclasses – Ethyra Consulting Services</title>
-  <meta name="description" content="Join Ethyra's executive masterclasses and webinars exploring rigorous social programme design, real-time monitoring and evaluation, and social return on investment.">
+  <title>ETHYRA — WEBINARS | Better questions lead to better change.</title>
+  <meta name="description" content="Ethyra's webinars bring ideas, evidence, and practical perspectives into conversations about social development and impact.">
+
+  <!-- Suppress Intro Animation on internal navigation -->
+  <script>
+    try { sessionStorage.setItem('ethyra_curtain_intro_shown', 'true'); } catch(e) {}
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/clean_ethyra_logo.png">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/landing-page.css?v=8.0">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/site-header.css">
+  <link rel="stylesheet" href="css/landing-page.css?v=12.0">
   <link rel="stylesheet" href="css/magnetic-button.css">
+  <link rel="stylesheet" href="css/faq-accordion.css">
+  <link rel="stylesheet" href="css/auth-modal.css">
+
   <style>
-    .webinar-hero {
-      max-width: 1360px;
-      margin: 2rem auto 4rem;
-      padding: 3rem 2rem;
+    /* ==========================================================================
+       ETHYRA WEBINARS — HIGH-END CREATIVE VISUAL DESIGN SYSTEM
+       ========================================================================== */
+
+    :root {
+      --wb-navy: #002c8b;
+      --wb-deep: #001848;
+      --wb-night: #060e22;
+      --wb-cyan: #009ae0;
+      --wb-bright-cyan: #00d2ff;
+      --wb-glow: rgba(0, 154, 224, 0.35);
+      --wb-amber: #f59e0b;
+      --wb-card-bg: rgba(255, 255, 255, 0.94);
+      --wb-card-border: rgba(0, 44, 139, 0.12);
+      --wb-pill-shadow: 0 10px 30px rgba(0, 44, 139, 0.18);
+    }
+
+    /* Ambient Hero Background Glow & Particle Canvas */
+    .webinar-hero-wrap {
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 1.5rem 4.5rem;
+      background: radial-gradient(circle at 50% 18%, rgba(0, 154, 224, 0.09) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+
+    .webinar-canvas-wrap {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    #webinarParticleCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      opacity: 0.85;
+    }
+
+    /* Floating Aurora Orbs */
+    .wb-ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+      animation: orbFloat 14s ease-in-out infinite alternate;
+    }
+
+    .wb-orb-1 {
+      top: -10%;
+      left: 15%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(0, 154, 224, 0.22) 0%, transparent 70%);
+    }
+
+    .wb-orb-2 {
+      top: 30%;
+      right: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 44, 139, 0.16) 0%, transparent 70%);
+      animation-delay: -5s;
+    }
+
+    @keyframes orbFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, -30px) scale(1.08); }
+      100% { transform: translate(-30px, 35px) scale(0.95); }
+    }
+
+    /* Hero Main Content */
+    .webinar-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
       text-align: center;
     }
-    .webinar-hero-badge {
+
+    /* Floating Badge */
+    .wb-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.55rem 1.4rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 154, 224, 0.32);
+      box-shadow: 0 6px 24px rgba(0, 154, 224, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--wb-navy);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.3s ease;
+    }
+
+    .wb-badge-pill:hover {
+      transform: translateY(-2px);
+    }
+
+    .wb-live-pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--wb-cyan);
+      box-shadow: 0 0 0 0 rgba(0, 154, 224, 0.8);
+      animation: pulseGlow 1.8s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 154, 224, 0.8); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 154, 224, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 154, 224, 0); }
+    }
+
+    /* Hero Typography */
+    .webinar-hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.6rem, 5.8vw, 4.8rem);
+      font-weight: 800;
+      color: var(--wb-deep);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.6rem;
+      background: linear-gradient(135deg, #001848 0%, #002c8b 45%, #009ae0 85%, #00d2ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .webinar-hero-lead {
+      max-width: 820px;
+      margin: 0 auto 2.5rem;
+      font-size: clamp(1.1rem, 1.7vw, 1.3rem);
+      color: var(--slate-600);
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .webinar-hero-lead p + p {
+      margin-top: 1rem;
+    }
+
+    /* ==========================================================================
+       BUTTONS WITH 100% GUARANTEED VISIBLE TEXT & RICH INTERACTION
+       ========================================================================== */
+    .wb-action-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.05rem 2.3rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #002c8b 0%, #0056b3 50%, #009ae0 100%);
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 44, 139, 0.32), 0 0 25px rgba(0, 154, 224, 0.28);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wb-action-btn-primary span {
+      color: #ffffff !important;
+      font-weight: 700;
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+    }
+
+    .wb-action-btn-primary svg {
+      color: #ffffff !important;
+      stroke: #ffffff !important;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.3s ease;
+    }
+
+    .wb-action-btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+      z-index: 1;
+    }
+
+    .wb-action-btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 45px rgba(0, 44, 139, 0.42), 0 0 35px rgba(0, 154, 224, 0.45);
+      color: #ffffff !important;
+    }
+
+    .wb-action-btn-primary:hover svg {
+      transform: translateY(3px);
+    }
+
+    .wb-action-btn-primary:hover::before {
+      left: 100%;
+    }
+
+    /* Sub-Manifesto Banner Pill */
+    .wb-manifesto-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      padding: 0.85rem 2rem;
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 154, 224, 0.28);
+      border-radius: 9999px;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(0.95rem, 1.35vw, 1.15rem);
+      font-weight: 700;
+      color: var(--wb-navy);
+      letter-spacing: 0.02em;
+      box-shadow: 0 10px 30px rgba(0, 44, 139, 0.08);
+      backdrop-filter: blur(12px);
+      margin-top: 2.5rem;
+    }
+
+    .wb-manifesto-dot {
+      color: var(--wb-cyan);
+      font-weight: 900;
+    }
+
+    /* Section Separators */
+    .wb-section-divider {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 154, 224, 0.25), transparent);
+    }
+
+    /* Common Section Wrapper */
+    .wb-section-block {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5.5rem 1.5rem;
+      position: relative;
+    }
+
+    .wb-section-header {
+      margin-bottom: 2.75rem;
+    }
+
+    .wb-kicker-tag {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.45rem 1.1rem;
-      border-radius: var(--radius-full);
-      background: rgba(0, 154, 224, 0.09);
-      border: 1px solid rgba(0, 154, 224, 0.28);
-      font-size: 0.85rem;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      background: rgba(0, 44, 139, 0.06);
+      border: 1px solid rgba(0, 44, 139, 0.16);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: var(--navy);
-      letter-spacing: 0.05em;
+      color: var(--wb-navy);
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    .webinar-hero-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-      font-weight: 800;
-      color: var(--navy-dark);
-      line-height: 1.15;
       margin-bottom: 1.25rem;
-      letter-spacing: -0.02em;
     }
-    .webinar-hero-subtext {
-      max-width: 760px;
-      margin: 0 auto 2.5rem;
+
+    .wb-kicker-num {
+      color: var(--wb-cyan);
+      font-weight: 800;
+    }
+
+    .wb-heading-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      font-weight: 800;
+      color: var(--wb-deep);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .wb-heading-subtitle {
+      font-size: 1.18rem;
+      color: var(--slate-600);
+      line-height: 1.7;
+      max-width: 820px;
+    }
+
+    /* ==========================================================================
+       SECTION 01 — WHY WE SHARE: CREATIVE EVIDENCE-TO-ACTION VISUAL
+       ========================================================================== */
+    .wb-why-master-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(242, 248, 255, 0.92) 100%);
+      border: 1px solid rgba(0, 154, 224, 0.24);
+      border-radius: 28px;
+      padding: clamp(2rem, 4.5vw, 3.8rem);
+      box-shadow: 0 20px 55px rgba(0, 44, 139, 0.09);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+    }
+
+    .wb-why-master-card::after {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(0, 154, 224, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .wb-why-narrative {
+      font-size: 1.2rem;
+      line-height: 1.85;
+      color: var(--slate-800);
+      max-width: 950px;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .wb-why-narrative p + p {
+      margin-top: 1.25rem;
+    }
+
+    /* Creative Interactive Loop Grid */
+    .wb-loop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .wb-loop-node {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 44, 139, 0.08);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: 0 6px 20px rgba(0, 44, 139, 0.04);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wb-loop-node::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--wb-navy), var(--wb-cyan));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .wb-loop-node:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 154, 224, 0.4);
+      box-shadow: 0 16px 36px rgba(0, 154, 224, 0.16);
+    }
+
+    .wb-loop-node:hover::before {
+      opacity: 1;
+    }
+
+    .wb-loop-node-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(0, 44, 139, 0.08) 0%, rgba(0, 154, 224, 0.16) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--wb-navy);
+      margin-bottom: 1.25rem;
+      transition: transform 0.3s ease;
+    }
+
+    .wb-loop-node:hover .wb-loop-node-icon {
+      transform: scale(1.1) rotate(4deg);
+      color: var(--wb-cyan);
+    }
+
+    .wb-loop-node-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--wb-deep);
+      margin-bottom: 0.5rem;
+    }
+
+    .wb-loop-node-desc {
+      font-size: 0.94rem;
+      color: var(--slate-600);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       SECTION 02 — EXPLORE OUR WEBINARS: INTERACTIVE SCHEDULE & BLUEPRINT CARDS
+       ========================================================================== */
+    .wb-tab-switcher {
+      display: inline-flex;
+      background: rgba(0, 44, 139, 0.07);
+      padding: 0.45rem;
+      border-radius: 9999px;
+      gap: 0.5rem;
+      margin-bottom: 2.75rem;
+      border: 1px solid rgba(0, 44, 139, 0.12);
+    }
+
+    .wb-tab-pill {
+      padding: 0.85rem 2rem;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--slate-700);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .wb-tab-pill.is-active {
+      background: #ffffff;
+      color: var(--wb-navy) !important;
+      box-shadow: 0 6px 20px rgba(0, 44, 139, 0.15);
+    }
+
+    .wb-tab-panel-container {
+      position: relative;
+    }
+
+    .wb-tab-view {
+      display: none;
+      animation: tabFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .wb-tab-view.is-active {
+      display: block;
+    }
+
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Curated Showcase Card */
+    .wb-showcase-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 44, 139, 0.1);
+      border-radius: 26px;
+      padding: clamp(2rem, 4vw, 3.2rem);
+      box-shadow: 0 16px 45px rgba(0, 44, 139, 0.07);
+      position: relative;
+      transition: all 0.35s ease;
+    }
+
+    .wb-showcase-card:hover {
+      border-color: rgba(0, 154, 224, 0.38);
+      box-shadow: 0 22px 60px rgba(0, 44, 139, 0.14);
+    }
+
+    .wb-showcase-badge {
+      display: inline-block;
+      padding: 0.35rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .wb-badge-upcoming-glow {
+      background: rgba(0, 154, 224, 0.14);
+      color: var(--wb-navy);
+      border: 1px solid rgba(0, 154, 224, 0.32);
+    }
+
+    .wb-badge-past-glow {
+      background: rgba(245, 158, 11, 0.14);
+      color: #b45309;
+      border: 1px solid rgba(245, 158, 11, 0.32);
+    }
+
+    .wb-showcase-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-weight: 800;
+      color: var(--wb-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .wb-showcase-desc {
       font-size: 1.15rem;
       color: var(--slate-600);
       line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 880px;
     }
-    .webinar-grid {
-      max-width: 1360px;
-      margin: 0 auto 5rem;
-      padding: 0 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2rem;
+
+    /* Structured Blueprint Spec Box */
+    .wb-spec-blueprint {
+      background: linear-gradient(135deg, rgba(0, 44, 139, 0.02) 0%, rgba(0, 154, 224, 0.06) 100%);
+      border: 1.5px dashed rgba(0, 154, 224, 0.38);
+      border-radius: 20px;
+      padding: clamp(1.5rem, 3vw, 2.2rem);
+      margin-top: 1.75rem;
     }
-    .webinar-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(0, 44, 139, 0.09);
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .webinar-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-xl);
-    }
-    .webinar-card-header {
-      padding: 1.75rem 2rem 1.25rem;
-      background: linear-gradient(135deg, rgba(0, 44, 139, 0.03) 0%, rgba(0, 154, 224, 0.08) 100%);
-      border-bottom: 1px solid rgba(0, 44, 139, 0.06);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .webinar-status-pill {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: var(--radius-full);
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .status-upcoming {
-      background: rgba(0, 154, 224, 0.15);
-      color: var(--navy);
-      border: 1px solid rgba(0, 154, 224, 0.3);
-    }
-    .status-ondemand {
-      background: rgba(245, 158, 11, 0.15);
-      color: #b45309;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-    .webinar-card-body {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .webinar-meta-info {
-      display: flex;
-      gap: 1.25rem;
-      font-size: 0.88rem;
-      color: var(--slate-600);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    .webinar-meta-item {
+
+    .wb-spec-blueprint-head {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-    }
-    .webinar-topic-title {
+      gap: 0.65rem;
       font-family: 'Outfit', sans-serif;
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--navy-dark);
-      line-height: 1.3;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--wb-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       margin-bottom: 1rem;
     }
-    .webinar-desc {
-      font-size: 0.95rem;
-      color: var(--slate-600);
-      line-height: 1.65;
-      margin-bottom: 1.75rem;
-      flex-grow: 1;
-    }
-    .webinar-speaker {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--slate-100);
+
+    .wb-spec-summary-text {
+      font-size: 1.05rem;
+      color: var(--slate-800);
+      font-weight: 500;
+      line-height: 1.7;
       margin-bottom: 1.5rem;
     }
-    .speaker-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy), var(--cyan));
+
+    .wb-spec-chip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.15rem;
+    }
+
+    .wb-spec-chip {
+      background: #ffffff;
+      border: 1px solid rgba(0, 44, 139, 0.1);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0, 44, 139, 0.04);
+      transition: all 0.25s ease;
+    }
+
+    .wb-spec-chip:hover {
+      border-color: var(--wb-cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 154, 224, 0.12);
+    }
+
+    .wb-spec-chip-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(0, 154, 224, 0.12);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--white);
+      color: var(--wb-navy);
+      flex-shrink: 0;
+    }
+
+    .wb-spec-chip-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
       font-weight: 700;
-      font-size: 0.9rem;
+      color: var(--wb-deep);
     }
-    .speaker-name {
-      font-weight: 700;
-      color: var(--slate-900);
-      font-size: 0.92rem;
+
+    .wb-button-cluster {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+      align-items: center;
     }
-    .speaker-role {
-      font-size: 0.8rem;
-      color: var(--slate-600);
-    }
-    .btn-register {
+
+    .wb-secondary-pill-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      padding: 0.8rem 1.5rem;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: var(--radius-full);
-      font-size: 0.92rem;
-      font-weight: 600;
+      gap: 0.65rem;
+      padding: 0.95rem 2rem;
+      border-radius: 9999px;
+      background: #ffffff;
+      color: var(--wb-navy) !important;
+      border: 1.5px solid rgba(0, 44, 139, 0.25);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 700;
       text-decoration: none;
-      transition: var(--transition-smooth);
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 44, 139, 0.06);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .wb-secondary-pill-btn span {
+      color: var(--wb-navy) !important;
+      font-weight: 700;
+    }
+
+    .wb-secondary-pill-btn:hover {
+      background: rgba(0, 154, 224, 0.08);
+      border-color: var(--wb-cyan);
+      color: var(--wb-deep) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 154, 224, 0.16);
+    }
+
+    /* ==========================================================================
+       SECTION 03 — WHAT YOU CAN EXPECT: 3D GYROSCOPIC SPOTLIGHT CARDS
+       ========================================================================== */
+    .wb-expect-grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .wb-expect-card-3d {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 44, 139, 0.08);
+      border-radius: 26px;
+      padding: 2.8rem 2.2rem;
+      box-shadow: 0 12px 35px rgba(0, 44, 139, 0.06);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wb-expect-card-3d::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--wb-navy), var(--wb-cyan), var(--wb-bright-cyan));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .wb-expect-card-3d:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 55px rgba(0, 154, 224, 0.18);
+      border-color: rgba(0, 154, 224, 0.35);
+    }
+
+    .wb-expect-card-3d:hover::after {
+      opacity: 1;
+    }
+
+    .wb-expect-card-glyph {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(0, 44, 139, 0.08) 0%, rgba(0, 154, 224, 0.18) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--wb-navy);
+      margin-bottom: 1.75rem;
+      transition: transform 0.35s ease;
+    }
+
+    .wb-expect-card-3d:hover .wb-expect-card-glyph {
+      transform: scale(1.12) rotate(5deg);
+      color: var(--wb-cyan);
+    }
+
+    .wb-expect-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--wb-deep);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .wb-expect-card-text {
+      font-size: 1.05rem;
+      color: var(--slate-600);
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       SECTION 04 — JOIN THE CONVERSATION: GRAND OBSIDIAN SAPPHIRE HERO BANNER
+       ========================================================================== */
+    .wb-join-grand-banner {
+      background: linear-gradient(135deg, #021235 0%, #002c8b 50%, #0842a0 100%);
+      border-radius: 32px;
+      padding: clamp(3.5rem, 6vw, 5.2rem) clamp(2rem, 5vw, 4.2rem);
+      color: #ffffff;
+      box-shadow: 0 30px 75px rgba(0, 24, 72, 0.35);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .wb-join-grand-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 154, 224, 0.28) 0%, transparent 60%);
+      pointer-events: none;
+      animation: rotateBannerGlow 22s linear infinite;
+    }
+
+    @keyframes rotateBannerGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .wb-join-inner-box {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .wb-join-kicker-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1.3rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .wb-join-headline-large {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.3rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 1.4rem;
+      letter-spacing: -0.025em;
+    }
+
+    .wb-join-paragraph {
+      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.75;
+      margin-bottom: 2.8rem;
+    }
+
+    /* High-Contrast Bold Action Buttons in Section 04 */
+    .wb-join-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .wb-btn-white-prominent {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1.1rem 2.6rem;
+      border-radius: 9999px;
+      background: #ffffff !important;
+      color: #002c8b !important;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.12rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       border: none;
       cursor: pointer;
     }
-    .btn-register:hover {
-      background: var(--navy-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 44, 139, 0.28);
+
+    .wb-btn-white-prominent span {
+      color: #002c8b !important;
+      font-weight: 800;
     }
-    /* Modal styles */
-    .register-modal-overlay {
+
+    .wb-btn-white-prominent:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+      background: #f8fafc !important;
+      color: #001848 !important;
+    }
+
+    .wb-btn-ghost-prominent {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1.1rem 2.6rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+      border: 2px solid rgba(255, 255, 255, 0.6) !important;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.12rem;
+      font-weight: 800;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .wb-btn-ghost-prominent span {
+      color: #ffffff !important;
+      font-weight: 800;
+    }
+
+    .wb-btn-ghost-prominent:hover {
+      background: rgba(255, 255, 255, 0.28) !important;
+      border-color: #ffffff !important;
+      transform: translateY(-3px) scale(1.03);
+      color: #ffffff !important;
+    }
+
+    .wb-official-signoff {
+      padding-top: 2.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.95);
+      letter-spacing: 0.04em;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE MODALS
+       ========================================================================== */
+    .wb-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 24, 72, 0.65);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
+      background: rgba(0, 24, 72, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 100000;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
     }
-    .register-modal-overlay.is-active {
+
+    .wb-modal-backdrop.is-active {
       display: flex;
     }
-    .register-modal-box {
-      background: var(--white);
-      max-width: 520px;
+
+    .wb-modal-dialog {
+      background: #ffffff;
+      max-width: 540px;
       width: 100%;
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-xl);
+      border-radius: 24px;
+      padding: 2.6rem;
+      box-shadow: 0 30px 75px rgba(0, 24, 72, 0.35);
       position: relative;
+      animation: modalPopIn 0.32s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .modal-close-btn {
+
+    @keyframes modalPopIn {
+      from { transform: scale(0.9) translateY(12px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .wb-modal-close-btn {
       position: absolute;
       top: 1.25rem;
       right: 1.25rem;
       background: var(--slate-100);
       border: none;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       cursor: pointer;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--slate-600);
-      transition: background 0.2s ease;
+      transition: all 0.2s ease;
     }
-    .modal-close-btn:hover {
+
+    .wb-modal-close-btn:hover {
       background: var(--slate-200);
       color: var(--slate-900);
+      transform: rotate(90deg);
     }
-    .modal-title {
+
+    .wb-modal-heading {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--navy-dark);
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--wb-deep);
       margin-bottom: 0.5rem;
     }
-    .modal-sub {
+
+    .wb-modal-subtext {
+      font-size: 0.98rem;
       color: var(--slate-600);
-      font-size: 0.95rem;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
     }
-    .form-group {
-      margin-bottom: 1.25rem;
+
+    .wb-form-row {
+      margin-bottom: 1.35rem;
       text-align: left;
     }
-    .form-label {
+
+    .wb-input-label {
       display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 700;
       color: var(--slate-800);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.45rem;
     }
-    .form-input {
+
+    .wb-text-field,
+    .wb-textarea-field {
       width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--slate-200);
-      border-radius: var(--radius-md);
+      padding: 0.9rem 1.1rem;
+      border: 1.5px solid var(--slate-200);
+      border-radius: 12px;
       font-family: inherit;
-      font-size: 0.92rem;
-      transition: border-color 0.2s ease;
+      font-size: 0.98rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
-    .form-input:focus {
+
+    .wb-textarea-field {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .wb-text-field:focus,
+    .wb-textarea-field:focus {
       outline: none;
-      border-color: var(--cyan);
-      box-shadow: 0 0 0 3px rgba(0, 154, 224, 0.15);
+      border-color: var(--wb-cyan);
+      box-shadow: 0 0 0 4px rgba(0, 154, 224, 0.18);
     }
-    .form-success-msg {
+
+    .wb-submit-btn-full {
+      width: 100%;
+      padding: 1.05rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, var(--wb-navy), var(--wb-cyan));
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      margin-top: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0, 44, 139, 0.25);
+      transition: all 0.25s ease;
+    }
+
+    .wb-submit-btn-full span {
+      color: #ffffff !important;
+      font-weight: 800;
+    }
+
+    .wb-submit-btn-full:hover {
+      box-shadow: 0 14px 32px rgba(0, 44, 139, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .wb-confirmation-box {
       display: none;
-      padding: 1.5rem;
+      padding: 1.6rem;
       background: #ecfdf5;
-      border: 1px solid #10b981;
-      border-radius: var(--radius-md);
+      border: 1.5px solid #10b981;
+      border-radius: 14px;
       color: #065f46;
       text-align: center;
       font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .wb-error-box {
+      display: none;
+      padding: 1.2rem 1.4rem;
+      background: #fef2f2;
+      border: 1.5px solid #ef4444;
+      border-radius: 12px;
+      color: #991b1b;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-top: 1rem;
+    }
+
+    /* Scroll Reveal Engine */
+    .wb-scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .wb-scroll-reveal.has-revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -287,7 +1077,7 @@
   </div>
 
   <!-- ==========================================================================
-       Sticky Header Navbar with Camouflaged Logo
+       Sticky Header Navbar with Official Ethyra Logo
        ========================================================================== -->
   <header class="site-header">
     <div class="header-container">
@@ -299,7 +1089,7 @@
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Home</a></li>
           <li><a href="about-us.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">About Us</a></li>
-          <li><a href="index.html#services" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Services</a></li>
+          <li><a href="services.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Services</a></li>
           <li><a href="webinar.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav active">Webinar</a></li>
         </ul>
       </nav>
@@ -314,175 +1104,514 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="webinar-hero">
-      <div class="webinar-hero-badge">
-        <span class="pulse-indicator"></span>
-        <span>Executive Masterclasses &amp; Webinars</span>
+    <!-- ==========================================================================
+         HERO SECTION: ETHYRA — WEBINARS
+         ========================================================================== -->
+    <section class="webinar-hero-wrap">
+      <div class="wb-ambient-orb wb-orb-1" aria-hidden="true"></div>
+      <div class="wb-ambient-orb wb-orb-2" aria-hidden="true"></div>
+
+      <!-- Kinetic Particle Constellation Canvas -->
+      <div class="webinar-canvas-wrap" aria-hidden="true">
+        <canvas id="webinarParticleCanvas"></canvas>
       </div>
-      <h1 class="webinar-hero-title">Translating Good Intentions<br>into Verifiable Impact</h1>
-      <p class="webinar-hero-subtext">
-        Join Ethyra's live practitioner masterclasses and on-demand analytical sessions exploring programme design, real-time M&amp;E frameworks, and stakeholder-validated social return on investment.
-      </p>
-    </section>
 
-    <!-- Masterclasses Grid -->
-    <section class="webinar-grid">
-      <!-- Session 1: Upcoming -->
-      <article class="webinar-card">
-        <div class="webinar-card-header">
-          <span class="webinar-status-pill status-upcoming">Upcoming Live Masterclass</span>
-          <span style="font-size: 0.85rem; font-weight: 600; color: var(--navy);">Nov 12, 2026</span>
+      <div class="webinar-hero-inner">
+        <div class="wb-badge-pill">
+          <span class="wb-live-pulse-dot" aria-hidden="true"></span>
+          <span>ETHYRA — WEBINARS</span>
         </div>
-        <div class="webinar-card-body">
-          <div class="webinar-meta-info">
-            <span class="webinar-meta-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              60 Mins
-            </span>
-            <span class="webinar-meta-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-              Live Q&amp;A
-            </span>
-          </div>
-          <h2 class="webinar-topic-title">Rethinking Theory of Change: From Logical Frameworks to Real-World Causality</h2>
-          <p class="webinar-desc">
-            Learn how to design programme logic models that survive contact with the real world, pinpoint root causes before capital is committed, and avoid superficial activity tracking.
-          </p>
-          <div class="webinar-speaker">
-            <div class="speaker-avatar">EA</div>
-            <div>
-              <div class="speaker-name">Ethyra Advisory Council</div>
-              <div class="speaker-role">Senior Practice Leads</div>
-            </div>
-          </div>
-          <button class="btn-register" onclick="openRegisterModal('Rethinking Theory of Change')">
-            <span>Reserve Executive Seat</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
-      </article>
 
-      <!-- Session 2: Upcoming -->
-      <article class="webinar-card">
-        <div class="webinar-card-header">
-          <span class="webinar-status-pill status-upcoming">Upcoming Live Masterclass</span>
-          <span style="font-size: 0.85rem; font-weight: 600; color: var(--navy);">Nov 26, 2026</span>
-        </div>
-        <div class="webinar-card-body">
-          <div class="webinar-meta-info">
-            <span class="webinar-meta-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              75 Mins
-            </span>
-            <span class="webinar-meta-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-              Workshop
-            </span>
-          </div>
-          <h2 class="webinar-topic-title">Real-Time Monitoring: Continuous Feedback Loops while there is Time to Act</h2>
-          <p class="webinar-desc">
-            Moving beyond end-of-year audits. Architecting dynamic data loops, field enumerator verifications, and KPI dashboards that guide mid-programme course correction.
-          </p>
-          <div class="webinar-speaker">
-            <div class="speaker-avatar">ME</div>
-            <div>
-              <div class="speaker-name">M&amp;E Systems Team</div>
-              <div class="speaker-role">Evaluation &amp; Attribution Specialists</div>
-            </div>
-          </div>
-          <button class="btn-register" onclick="openRegisterModal('Real-Time Monitoring Loops')">
-            <span>Reserve Executive Seat</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
-      </article>
+        <h1 class="webinar-hero-title">
+          Better questions lead to better change.
+        </h1>
 
-      <!-- Session 3: On-Demand -->
-      <article class="webinar-card">
-        <div class="webinar-card-header">
-          <span class="webinar-status-pill status-ondemand">On-Demand Briefing</span>
-          <span style="font-size: 0.85rem; font-weight: 600; color: #b45309;">Available Now</span>
-        </div>
-        <div class="webinar-card-body">
-          <div class="webinar-meta-info">
-            <span class="webinar-meta-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              45 Mins
-            </span>
-            <span class="webinar-meta-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
-              HD Recording
-            </span>
-          </div>
-          <h2 class="webinar-topic-title">Look Beyond What Was Delivered: The "What Changed?" Assessment Standard</h2>
-          <p class="webinar-desc">
-            A comprehensive breakdown of counterfactual analysis, attribution models, and stakeholder co-creation in CSR impact measurement.
+        <div class="webinar-hero-lead">
+          <p>
+            Social impact is an evolving conversation. From understanding community needs to measuring outcomes, there is always more to question, learn, and improve.
           </p>
-          <div class="webinar-speaker">
-            <div class="speaker-avatar">IA</div>
-            <div>
-              <div class="speaker-name">Social Impact Council</div>
-              <div class="speaker-role">Strategic Advisory Unit</div>
-            </div>
-          </div>
-          <button class="btn-register" onclick="openRegisterModal('Look Beyond What Was Delivered')">
-            <span>Watch Instant Recording</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          </button>
+          <p>
+            Ethyra's webinars bring ideas, evidence, and practical perspectives into conversations about social development and impact.
+          </p>
         </div>
-      </article>
-    </section>
 
-    <!-- Call to Action Banner -->
-    <section class="cta-section">
-      <div class="cta-banner-box">
-        <div class="cta-inner">
-          <h2 class="cta-heading">Need a custom workshop for your team?</h2>
-          <p class="cta-subtext">
-            We deliver tailor-made masterclasses on programme design, M&amp;E frameworks, and impact assessment for corporate CSR boards and foundations.
-          </p>
-          <a href="contact-us.html" class="btn-cta-white">
-            <span>Request In-House Masterclass</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <div>
+          <a href="#explore-webinars" class="wb-action-btn-primary" id="exploreWebinarsBtn">
+            <span>Explore Upcoming Webinars</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
           </a>
+        </div>
+
+        <div>
+          <div class="wb-manifesto-badge">
+            <span>Less jargon.</span>
+            <span class="wb-manifesto-dot">•</span>
+            <span>More insight.</span>
+            <span class="wb-manifesto-dot">•</span>
+            <span>Knowledge you can use.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wb-section-divider"></div>
+
+    <!-- ==========================================================================
+         01 — WHY WE SHARE
+         ========================================================================== -->
+    <section class="wb-section-block wb-scroll-reveal" id="why-we-share">
+      <div class="wb-section-header">
+        <div class="wb-kicker-tag">
+          <span class="wb-kicker-num">01</span>
+          <span>—</span>
+          <span>WHY WE SHARE</span>
+        </div>
+
+        <h2 class="wb-heading-title">
+          Learning shouldn't stop at the report.
+        </h2>
+      </div>
+
+      <div class="wb-why-master-card">
+        <div class="wb-why-narrative">
+          <p>
+            Good practice grows when knowledge is shared, assumptions are challenged, and different perspectives come together.
+          </p>
+          <p>
+            Through our webinars, we explore the questions behind social development work — helping practitioners and organisations think more critically about the way they design programmes, use evidence, and understand change.
+          </p>
+        </div>
+
+        <!-- Interactive Loop Nodes -->
+        <div class="wb-loop-grid">
+          <div class="wb-loop-node">
+            <div class="wb-loop-node-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            <h3 class="wb-loop-node-title">Knowledge Shared</h3>
+            <p class="wb-loop-node-desc">Transforming institutional learnings and field evidence into open dialogues that outlive static PDFs.</p>
+          </div>
+
+          <div class="wb-loop-node">
+            <div class="wb-loop-node-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <h3 class="wb-loop-node-title">Assumptions Challenged</h3>
+            <p class="wb-loop-node-desc">Probing programme design hypotheses against grassroots realities before capital is committed.</p>
+          </div>
+
+          <div class="wb-loop-node">
+            <div class="wb-loop-node-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="wb-loop-node-title">Perspectives United</h3>
+            <p class="wb-loop-node-desc">Convening social investors, practitioners, evaluators, and community voices in one constructive room.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wb-section-divider"></div>
+
+    <!-- ==========================================================================
+         02 — EXPLORE OUR WEBINARS
+         ========================================================================== -->
+    <section class="wb-section-block wb-scroll-reveal" id="explore-webinars">
+      <div class="wb-section-header">
+        <div class="wb-kicker-tag">
+          <span class="wb-kicker-num">02</span>
+          <span>—</span>
+          <span>EXPLORE OUR WEBINARS</span>
+        </div>
+
+        <h2 class="wb-heading-title">
+          Ideas worth your time.
+        </h2>
+
+        <p class="wb-heading-subtitle">
+          Discover conversations on social impact, CSR, research, programme design, and evidence-led decision-making.
+        </p>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="wb-tab-switcher" role="tablist">
+        <button class="wb-tab-pill is-active" id="btnTabUpcoming" onclick="setActiveWebinarTab('upcoming')" role="tab" aria-selected="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Upcoming Webinars
+        </button>
+        <button class="wb-tab-pill" id="btnTabPast" onclick="setActiveWebinarTab('past')" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>
+          Past Webinars
+        </button>
+      </div>
+
+      <!-- Tab Panel: Upcoming Webinars -->
+      <div class="wb-tab-panel-container">
+        <div class="wb-tab-view is-active" id="viewUpcoming" role="tabpanel">
+          <div class="wb-showcase-card">
+            <span class="wb-showcase-badge wb-badge-upcoming-glow">Upcoming Sessions Roster</span>
+            <h3 class="wb-showcase-title">Upcoming Webinars</h3>
+            <p class="wb-showcase-desc">
+              Explore upcoming sessions, meet the speakers, and find the details you need to participate.
+            </p>
+
+            <!-- Specification Blueprint -->
+            <div class="wb-spec-blueprint">
+              <div class="wb-spec-blueprint-head">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>Required Listing Specifications</span>
+              </div>
+              <p class="wb-spec-summary-text">
+                Each webinar listing should include its title, date and time, speaker, a short description, and a registration link.
+              </p>
+              <div class="wb-spec-chip-grid">
+                <div class="wb-spec-chip">
+                  <div class="wb-spec-chip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span class="wb-spec-chip-text">Title</span>
+                </div>
+                <div class="wb-spec-chip">
+                  <div class="wb-spec-chip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span class="wb-spec-chip-text">Date and Time</span>
+                </div>
+                <div class="wb-spec-chip">
+                  <div class="wb-spec-chip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span class="wb-spec-chip-text">Speaker</span>
+                </div>
+                <div class="wb-spec-chip">
+                  <div class="wb-spec-chip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span class="wb-spec-chip-text">Short Description</span>
+                </div>
+                <div class="wb-spec-chip">
+                  <div class="wb-spec-chip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span class="wb-spec-chip-text">Registration Link</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons with High-Contrast Visible Text -->
+            <div class="wb-button-cluster">
+              <button type="button" class="wb-action-btn-primary" onclick="openNotifyModal('Beyond the Static Report: Designing Dynamic M&E Frameworks for Scalable Social Impact', 'Thursday, November 12, 2026', '4:00 PM – 5:00 PM IST')">
+                <span>Register for Announcements</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+              <button type="button" class="wb-secondary-pill-btn" onclick="openSuggestModal()">
+                <span>Suggest a Topic ↗</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Panel: Past Webinars -->
+        <div class="wb-tab-view" id="viewPast" role="tabpanel">
+          <div class="wb-showcase-card">
+            <span class="wb-showcase-badge wb-badge-past-glow">Knowledge Archive</span>
+            <h3 class="wb-showcase-title">Past Webinars</h3>
+            <p class="wb-showcase-desc">
+              Missed a session? Revisit key conversations and explore recordings or resources where available.
+            </p>
+
+            <!-- Specification Blueprint -->
+            <div class="wb-spec-blueprint">
+              <div class="wb-spec-blueprint-head">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Required Archive Specifications</span>
+              </div>
+              <p class="wb-spec-summary-text">
+                Each past webinar should include its title, speaker, summary, and a recording or resource link if available.
+              </p>
+              <div class="wb-spec-chip-grid">
+                <div class="wb-spec-chip">
+                  <div class="wb-spec-chip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span class="wb-spec-chip-text">Title</span>
+                </div>
+                <div class="wb-spec-chip">
+                  <div class="wb-spec-chip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span class="wb-spec-chip-text">Speaker</span>
+                </div>
+                <div class="wb-spec-chip">
+                  <div class="wb-spec-chip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span class="wb-spec-chip-text">Summary</span>
+                </div>
+                <div class="wb-spec-chip">
+                  <div class="wb-spec-chip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span class="wb-spec-chip-text">Recording or Resource Link</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Button with High-Contrast Visible Text -->
+            <div class="wb-button-cluster">
+              <button type="button" class="wb-action-btn-primary" onclick="openNotifyModal('Past Webinar Resource Access')">
+                <span>Request Resource Archive Access</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wb-section-divider"></div>
+
+    <!-- ==========================================================================
+         Webinar FAQs (Below upcoming & past webinar listings)
+         ========================================================================== -->
+    <section class="wb-section-block wb-scroll-reveal" id="webinar-faqs" aria-labelledby="webinar-faq-title">
+      <div class="wb-section-header">
+        <div class="wb-kicker-tag">
+          <span class="wb-kicker-num">FAQ</span>
+          <span>—</span>
+          <span>FREQUENTLY ASKED QUESTIONS</span>
+        </div>
+
+        <h2 id="webinar-faq-title" class="wb-heading-title">
+          Webinar FAQs
+        </h2>
+        <p class="wb-heading-subtitle">
+          Everything you need to know about participating, accessing recordings, and collaborating.
+        </p>
+      </div>
+
+      <div class="faq-accordion wb-faq-accordion">
+        <!-- 1. How do I register for a webinar? -->
+        <details class="faq-details" name="wb-faq">
+          <summary class="faq-summary">
+            <span>How do I register for a webinar?</span>
+            <span class="faq-summary-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-details-body">
+            <p>Use the registration link provided on the relevant webinar listing.</p>
+          </div>
+        </details>
+
+        <!-- 2. Will recordings be available? -->
+        <details class="faq-details" name="wb-faq">
+          <summary class="faq-summary">
+            <span>Will recordings be available?</span>
+            <span class="faq-summary-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-details-body">
+            <p>Where a recording is available for sharing, we'll link it on the relevant webinar page.</p>
+          </div>
+        </details>
+
+        <!-- 3. Can I suggest a topic or collaborate on a webinar? -->
+        <details class="faq-details" name="wb-faq">
+          <summary class="faq-summary">
+            <span>Can I suggest a topic or collaborate on a webinar?</span>
+            <span class="faq-summary-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-details-body">
+            <p>Yes. Reach out with your idea, proposed topic, or collaboration opportunity.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <div class="wb-section-divider"></div>
+
+    <!-- ==========================================================================
+         03 — WHAT YOU CAN EXPECT
+         ========================================================================== -->
+    <section class="wb-section-block wb-scroll-reveal" id="what-you-can-expect">
+      <div class="wb-section-header">
+        <div class="wb-kicker-tag">
+          <span class="wb-kicker-num">03</span>
+          <span>—</span>
+          <span>WHAT YOU CAN EXPECT</span>
+        </div>
+
+        <h2 class="wb-heading-title">
+          Practical perspectives. Thoughtful conversations.
+        </h2>
+      </div>
+
+      <div class="wb-expect-grid-layout">
+        <!-- Expectation Card 1 -->
+        <article class="wb-expect-card-3d">
+          <div class="wb-expect-card-glyph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3 class="wb-expect-card-title">Ideas grounded in practice.</h3>
+          <p class="wb-expect-card-text">
+            Explore concepts and methods that connect to real social development challenges.
+          </p>
+        </article>
+
+        <!-- Expectation Card 2 -->
+        <article class="wb-expect-card-3d">
+          <div class="wb-expect-card-glyph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </div>
+          <h3 class="wb-expect-card-title">Questions worth asking.</h3>
+          <p class="wb-expect-card-text">
+            Challenge familiar assumptions and look at problems from different perspectives.
+          </p>
+        </article>
+
+        <!-- Expectation Card 3 -->
+        <article class="wb-expect-card-3d">
+          <div class="wb-expect-card-glyph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="wb-expect-card-title">Insights you can apply.</h3>
+          <p class="wb-expect-card-text">
+            Take away ideas that can inform your work, decisions, and approach to social impact.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <div class="wb-section-divider"></div>
+
+    <!-- ==========================================================================
+         04 — JOIN THE CONVERSATION
+         ========================================================================== -->
+    <section class="wb-section-block wb-scroll-reveal" id="join-the-conversation">
+      <div class="wb-join-grand-banner">
+        <div class="wb-join-inner-box">
+          <div class="wb-join-kicker-pill">
+            <span>04 — JOIN THE CONVERSATION</span>
+          </div>
+
+          <h2 class="wb-join-headline-large">
+            Curious minds make better practice.
+          </h2>
+
+          <p class="wb-join-paragraph">
+            Have a topic you'd like us to explore, or want to collaborate on a future session?<br>
+            We'd love to hear from you.
+          </p>
+
+          <div class="wb-join-button-row">
+            <button type="button" class="wb-btn-white-prominent" onclick="openSuggestModal()">
+              <span>Suggest a Topic ↗</span>
+            </button>
+
+            <a href="contact-us.html" class="wb-btn-ghost-prominent">
+              <span>Contact Ethyra ↗</span>
+            </a>
+          </div>
+
+          <div class="wb-official-signoff">
+            Ethyra Consulting Services — Insights you can act on.
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Registration Modal -->
-  <div id="registerModal" class="register-modal-overlay" onclick="closeRegisterModal(event)">
-    <div class="register-modal-box" onclick="event.stopPropagation()">
-      <button class="modal-close-btn" onclick="closeRegisterModal()">&times;</button>
-      <h3 class="modal-title">Executive Registration</h3>
-      <p id="modalSessionName" class="modal-sub">Rethinking Theory of Change</p>
-      
-      <form id="webinarForm" onsubmit="handleRegistration(event)">
-        <div class="form-group">
-          <label class="form-label" for="regName">Full Name</label>
-          <input type="text" id="regName" class="form-input" placeholder="e.g. Dr. Jane Smith" required>
+  <!-- ==========================================================================
+       Interactive Modal: Suggest a Topic
+       ========================================================================== -->
+  <div id="suggestTopicModal" class="wb-modal-backdrop" onclick="closeSuggestModal(event)">
+    <div class="wb-modal-dialog" onclick="event.stopPropagation()">
+      <button type="button" class="wb-modal-close-btn" onclick="closeSuggestModal()" aria-label="Close">&times;</button>
+      <h3 class="wb-modal-heading">Suggest a Topic</h3>
+      <p class="wb-modal-subtext">
+        Have a topic you'd like us to explore, or want to collaborate on a future session? We'd love to hear from you.
+      </p>
+
+      <form id="suggestTopicForm" onsubmit="handleSuggestSubmit(event)">
+        <!-- Honeypot anti-spam field (hidden from legitimate users) -->
+        <div style="position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+          <input type="text" name="_hp_topic" id="suggestHoneypot" tabindex="-1" autocomplete="off">
         </div>
-        <div class="form-group">
-          <label class="form-label" for="regEmail">Corporate / Professional Email</label>
-          <input type="email" id="regEmail" class="form-input" placeholder="e.g. j.smith@organisation.org" required>
+
+        <div class="wb-form-row">
+          <label class="wb-input-label" for="suggestName">Your Name</label>
+          <input type="text" id="suggestName" class="wb-text-field" placeholder="Full name" maxlength="100" required>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="regOrg">Organisation / Foundation</label>
-          <input type="text" id="regOrg" class="form-input" placeholder="e.g. Global CSR Foundation" required>
+        <div class="wb-form-row">
+          <label class="wb-input-label" for="suggestEmail">Email Address</label>
+          <input type="email" id="suggestEmail" class="wb-text-field" placeholder="name@organisation.org" maxlength="150" required>
         </div>
-        <button type="submit" class="btn-register" style="margin-top: 1rem;">
-          <span>Confirm Registration</span>
+        <div class="wb-form-row">
+          <label class="wb-input-label" for="suggestIdea">Topic Idea or Collaboration Proposal</label>
+          <textarea id="suggestIdea" class="wb-textarea-field" placeholder="Share the question, challenge, or topic you would like explored..." maxlength="3000" required></textarea>
+        </div>
+        <button type="submit" class="wb-submit-btn-full" id="suggestSubmitBtn">
+          <span id="suggestSubmitBtnText">Submit Suggestion ↗</span>
         </button>
+        <div id="suggestErrorNotice" class="wb-error-box"></div>
       </form>
 
-      <div id="formSuccess" class="form-success-msg">
-        Registration confirmed! Access details and calendar invite have been sent to your email.
+      <div id="suggestSuccessNotice" class="wb-confirmation-box">
+        Thank you for sharing your perspective! The Ethyra team has received your suggestion and will be in touch.
       </div>
     </div>
   </div>
 
-  <!-- Global Footer -->
+  <!-- ==========================================================================
+       Interactive Modal: Register / Notification Link
+       ========================================================================== -->
+  <div id="notifyModal" class="wb-modal-backdrop" onclick="closeNotifyModal(event)">
+    <div class="wb-modal-dialog" onclick="event.stopPropagation()">
+      <button type="button" class="wb-modal-close-btn" onclick="closeNotifyModal()" aria-label="Close">&times;</button>
+      <h3 class="wb-modal-heading" id="notifyModalTitle">Webinar Registration</h3>
+      <p class="wb-modal-subtext" id="notifyModalDesc">
+        Enter your details to receive registration links and notification when upcoming sessions are published.
+      </p>
+
+      <form id="notifyForm" onsubmit="handleNotifySubmit(event)">
+        <div class="wb-form-row">
+          <label class="wb-input-label" for="notifyName">Your Name</label>
+          <input type="text" id="notifyName" class="wb-text-field" placeholder="Full name" required>
+        </div>
+        <div class="wb-form-row">
+          <label class="wb-input-label" for="notifyEmail">Corporate / Professional Email</label>
+          <input type="email" id="notifyEmail" class="wb-text-field" placeholder="name@organisation.org" required>
+        </div>
+<<<<<<< Updated upstream
+        <div class="wb-form-row">
+          <label class="wb-input-label" for="notifyPhone">Phone / WhatsApp Number (Optional)</label>
+          <input type="tel" id="notifyPhone" class="wb-text-field" placeholder="+91 98765 43210">
+        </div>
+        <button type="submit" class="wb-submit-btn-full" id="notifySubmitBtn">
+          <span id="notifySubmitBtnText">Confirm Registration &amp; Send Mail ↗</span>
+=======
+        <button type="submit" class="wb-submit-btn-full" id="notifySubmitBtn">
+          <span id="notifySubmitBtnText">Confirm Details &amp; Send Mail ↗</span>
+>>>>>>> Stashed changes
+        </button>
+        <div id="notifyErrorNotice" class="wb-error-box"></div>
+      </form>
+
+      <div id="notifySuccessNotice" class="wb-confirmation-box">
+        Confirmation received! You will receive priority notification and registration links.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Global Footer
+       ========================================================================== -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand-col">
@@ -508,9 +1637,8 @@
         <h4 class="footer-col-title">Company</h4>
         <ul class="footer-links">
           <li><a href="about-us.html">About Us</a></li>
-          <li><a href="webinar.html">Webinars &amp; Masterclasses</a></li>
-          <li><a href="index.html#methodology">Our Methodology</a></li>
-          <li><a href="index.html#services">Case Outcomes</a></li>
+          <li><a href="webinar.html">Webinars</a></li>
+          <li><a href="index.html#services">Services</a></li>
           <li><a href="contact-us.html">Contact Us</a></li>
         </ul>
       </div>
@@ -519,40 +1647,562 @@
         <h4 class="footer-col-title">Connect</h4>
         <ul class="footer-links">
           <li><a href="mailto:contact@ethyra.com">contact@ethyra.com</a></li>
-          <li><a href="variant-1.html">Interactive SVG Engine</a></li>
-          <li><a href="index.html">3D Video Hero Edition</a></li>
+          <li><a href="index.html">Ethyra Consulting Services</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
       <p>&copy; 2026 Ethyra Consulting Services. All rights reserved.</p>
-      <p>Design. Deliver. Demonstrate.</p>
+      <p>Ethyra Consulting Services — Insights you can act on.</p>
     </div>
   </footer>
 
-  <script>
-    function openRegisterModal(sessionTitle) {
-      document.getElementById('modalSessionName').innerText = sessionTitle;
-      document.getElementById('registerModal').classList.add('is-active');
-      document.getElementById('webinarForm').style.display = 'block';
-      document.getElementById('formSuccess').style.display = 'none';
-    }
-
-    function closeRegisterModal(e) {
-      if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn')) return;
-      document.getElementById('registerModal').classList.remove('is-active');
-    }
-
-    function handleRegistration(e) {
-      e.preventDefault();
-      document.getElementById('webinarForm').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-      setTimeout(() => {
-        closeRegisterModal();
-      }, 3000);
-    }
-  </script>
+  <!-- Scripts -->
   <script src="js/magnetic-button.js"></script>
+
+  <script>
+    /* ==========================================================================
+       KINETIC CONSTELLATION CANVAS ENGINE
+       ========================================================================== */
+    (function initConstellation() {
+      const canvas = document.getElementById('webinarParticleCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h;
+      let particles = [];
+      const mouse = { x: -1000, y: -1000, radius: 150 };
+
+      function resize() {
+        if (!canvas.parentElement) return;
+        w = canvas.width = canvas.parentElement.offsetWidth;
+        h = canvas.height = canvas.parentElement.offsetHeight;
+        initParticles();
+      }
+
+      function initParticles() {
+        particles = [];
+        const count = Math.floor((w * h) / 11000);
+        const maxParticles = Math.min(Math.max(count, 40), 95);
+        for (let i = 0; i < maxParticles; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.75,
+            vy: (Math.random() - 0.5) * 0.75,
+            r: Math.random() * 2.2 + 1.2,
+            color: Math.random() > 0.35 ? 'rgba(0, 154, 224, ' : 'rgba(0, 44, 139, '
+          });
+        }
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      window.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      window.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = w;
+          else if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          else if (p.y > h) p.y = 0;
+
+          const dx = mouse.x - p.x;
+          const dy = mouse.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const angle = Math.atan2(dy, dx);
+            const force = (mouse.radius - dist) / mouse.radius;
+            p.x -= Math.cos(angle) * force * 1.8;
+            p.y -= Math.sin(angle) * force * 1.8;
+          }
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + '0.8)';
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const djx = p.x - p2.x;
+            const djy = p.y - p2.y;
+            const d2 = Math.sqrt(djx * djx + djy * djy);
+            if (d2 < 125) {
+              const alpha = (1 - d2 / 125) * 0.32;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(0, 154, 224, ${alpha})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    /* ==========================================================================
+       SCROLL-TRIGGERED REVEAL OBSERVER
+       ========================================================================== */
+    (function initScrollReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('has-revealed');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.wb-scroll-reveal').forEach((el) => {
+        observer.observe(el);
+      });
+    })();
+
+    /* ==========================================================================
+       TAB SWITCHING CONTROLLER
+       ========================================================================== */
+    function setActiveWebinarTab(tab) {
+      const upBtn = document.getElementById('btnTabUpcoming');
+      const pastBtn = document.getElementById('btnTabPast');
+      const upView = document.getElementById('viewUpcoming');
+      const pastView = document.getElementById('viewPast');
+
+      if (tab === 'upcoming') {
+        upBtn.classList.add('is-active');
+        upBtn.setAttribute('aria-selected', 'true');
+        pastBtn.classList.remove('is-active');
+        pastBtn.setAttribute('aria-selected', 'false');
+        upView.classList.add('is-active');
+        pastView.classList.remove('is-active');
+      } else {
+        pastBtn.classList.add('is-active');
+        pastBtn.setAttribute('aria-selected', 'true');
+        upBtn.classList.remove('is-active');
+        upBtn.setAttribute('aria-selected', 'false');
+        pastView.classList.add('is-active');
+        upView.classList.remove('is-active');
+      }
+    }
+
+    /* ==========================================================================
+       MODAL CONTROLLERS
+       ========================================================================== */
+    function openSuggestModal() {
+      const modal = document.getElementById('suggestTopicModal');
+      modal.classList.add('is-active');
+      document.getElementById('suggestTopicForm').style.display = 'block';
+      document.getElementById('suggestSuccessNotice').style.display = 'none';
+      const errorNotice = document.getElementById('suggestErrorNotice');
+      if (errorNotice) {
+        errorNotice.style.display = 'none';
+        errorNotice.innerHTML = '';
+      }
+    }
+
+    function closeSuggestModal(e) {
+      if (e && e.target !== e.currentTarget && !e.target.classList.contains('wb-modal-close-btn')) return;
+      document.getElementById('suggestTopicModal').classList.remove('is-active');
+    }
+
+    async function handleSuggestSubmit(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById('suggestName');
+      const emailInput = document.getElementById('suggestEmail');
+      const ideaInput = document.getElementById('suggestIdea');
+      const honeypot = document.getElementById('suggestHoneypot');
+      const submitBtn = document.getElementById('suggestSubmitBtn');
+      const btnText = document.getElementById('suggestSubmitBtnText');
+      const errorNotice = document.getElementById('suggestErrorNotice');
+      const successNotice = document.getElementById('suggestSuccessNotice');
+
+<<<<<<< Updated upstream
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const idea = ideaInput ? ideaInput.value.trim() : '';
+=======
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const idea = ideaInput.value.trim();
+>>>>>>> Stashed changes
+      const _hp_topic = honeypot ? honeypot.value : '';
+
+      // Client-side validation
+      if (!name) {
+<<<<<<< Updated upstream
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please enter your full name.';
+          errorNotice.style.display = 'block';
+        }
+        nameInput?.focus();
+=======
+        errorNotice.innerHTML = '<strong>Validation Error:</strong> Please enter your full name.';
+        errorNotice.style.display = 'block';
+        nameInput.focus();
+>>>>>>> Stashed changes
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+<<<<<<< Updated upstream
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please provide a valid email address.';
+          errorNotice.style.display = 'block';
+        }
+        emailInput?.focus();
+=======
+        errorNotice.innerHTML = '<strong>Validation Error:</strong> Please provide a valid email address.';
+        errorNotice.style.display = 'block';
+        emailInput.focus();
+>>>>>>> Stashed changes
+        return;
+      }
+
+      if (!idea || idea.length < 10) {
+<<<<<<< Updated upstream
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please share a bit more detail about your suggested topic (at least 10 characters).';
+          errorNotice.style.display = 'block';
+        }
+        ideaInput?.focus();
+=======
+        errorNotice.innerHTML = '<strong>Validation Error:</strong> Please share a bit more detail about your suggested topic (at least 10 characters).';
+        errorNotice.style.display = 'block';
+        ideaInput.focus();
+>>>>>>> Stashed changes
+        return;
+      }
+
+      // Clear previous error
+<<<<<<< Updated upstream
+      if (errorNotice) {
+        errorNotice.style.display = 'none';
+        errorNotice.innerHTML = '';
+      }
+
+      // Set In-Flight Loading State (prevent double-submit)
+      if (submitBtn) submitBtn.disabled = true;
+      const originalText = btnText ? btnText.innerText : 'Submit Suggestion ↗';
+      if (btnText) btnText.innerText = 'Sending Suggestion...';
+
+      try {
+        // 1. Try to record suggestion in Supabase if client available
+        try {
+          const supabase = window.getSupabase ? window.getSupabase() : null;
+          if (supabase) {
+            await supabase.from('contact_messages').insert([
+              {
+                name: name,
+                email: email,
+                phone: 'Not provided (Webinar Suggestion)',
+                message: `[Webinar Topic Suggestion / Collaboration]\n${idea}`
+              }
+            ]);
+          }
+        } catch (dbErr) {
+          console.warn('Supabase topic suggestion sync warning:', dbErr);
+        }
+
+        // 2. Dispatch email notification via server API
+=======
+      errorNotice.style.display = 'none';
+      errorNotice.innerHTML = '';
+
+      // Set In-Flight Loading State (prevent double-submit)
+      submitBtn.disabled = true;
+      const originalText = btnText.innerText;
+      btnText.innerText = 'Sending Suggestion...';
+
+      try {
+>>>>>>> Stashed changes
+        const response = await fetch('/api/suggest-topic', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, email, idea, _hp_topic })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          document.getElementById('suggestTopicForm').style.display = 'none';
+<<<<<<< Updated upstream
+          if (successNotice) {
+            successNotice.innerHTML = `
+              <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Suggestion Received!</div>
+              <div>Thank you for sharing your perspective, <strong>${escapeHtml(name)}</strong>! The Ethyra team has received your topic idea.</div>
+            `;
+            successNotice.style.display = 'block';
+          }
+
+          if (nameInput) nameInput.value = '';
+          if (emailInput) emailInput.value = '';
+          if (ideaInput) ideaInput.value = '';
+=======
+          successNotice.innerHTML = `
+            <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Suggestion Received!</div>
+            <div>Thank you for sharing your perspective, <strong>${escapeHtml(name)}</strong>! The Ethyra team has received your topic idea and will be in touch.</div>
+          `;
+          successNotice.style.display = 'block';
+
+          // Clear inputs on success
+          nameInput.value = '';
+          emailInput.value = '';
+          ideaInput.value = '';
+>>>>>>> Stashed changes
+          if (honeypot) honeypot.value = '';
+
+          setTimeout(() => {
+            closeSuggestModal();
+          }, 4000);
+        } else {
+          throw new Error(data.error || 'Failed to submit suggestion. Please try again.');
+        }
+      } catch (err) {
+        console.error('Topic suggestion error:', err);
+<<<<<<< Updated upstream
+        if (errorNotice) {
+          errorNotice.innerHTML = `<strong>Submission Alert:</strong> ${escapeHtml(err.message)}`;
+          errorNotice.style.display = 'block';
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.innerText = originalText;
+=======
+        // Retain user input on error and display actionable alert
+        errorNotice.innerHTML = `<strong>Submission Alert:</strong> ${escapeHtml(err.message)}`;
+        errorNotice.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        btnText.innerText = originalText;
+>>>>>>> Stashed changes
+      }
+    }
+
+    function openNotifyModal(context, date, time) {
+      const modal = document.getElementById('notifyModal');
+      const titleElem = document.getElementById('notifyModalTitle');
+      const selectedTitle = context || 'Beyond the Static Report: Designing Dynamic M&E Frameworks for Scalable Social Impact';
+      
+      if (titleElem) titleElem.innerText = selectedTitle;
+      modal.dataset.webinarTitle = selectedTitle;
+      modal.dataset.webinarDate = date || 'Thursday, November 12, 2026';
+      modal.dataset.webinarTime = time || '4:00 PM – 5:00 PM IST';
+
+      modal.classList.add('is-active');
+      document.getElementById('notifyForm').style.display = 'block';
+      document.getElementById('notifySuccessNotice').style.display = 'none';
+      const errorNotice = document.getElementById('notifyErrorNotice');
+      if (errorNotice) {
+        errorNotice.style.display = 'none';
+        errorNotice.innerHTML = '';
+      }
+    }
+
+    function closeNotifyModal(e) {
+      if (e && e.target !== e.currentTarget && !e.target.classList.contains('wb-modal-close-btn')) return;
+      document.getElementById('notifyModal').classList.remove('is-active');
+    }
+
+    async function handleNotifySubmit(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById('notifyName');
+      const emailInput = document.getElementById('notifyEmail');
+<<<<<<< Updated upstream
+      const phoneInput = document.getElementById('notifyPhone');
+=======
+>>>>>>> Stashed changes
+      const submitBtn = document.getElementById('notifySubmitBtn');
+      const btnText = document.getElementById('notifySubmitBtnText');
+      const errorNotice = document.getElementById('notifyErrorNotice');
+      const successNotice = document.getElementById('notifySuccessNotice');
+<<<<<<< Updated upstream
+      const modal = document.getElementById('notifyModal');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const webinarTitle = modal.dataset.webinarTitle || document.getElementById('notifyModalTitle')?.innerText || 'Beyond the Static Report: Designing Dynamic M&E Frameworks for Scalable Social Impact';
+      const webinarDate = modal.dataset.webinarDate || 'Thursday, November 12, 2026';
+      const webinarTime = modal.dataset.webinarTime || '4:00 PM – 5:00 PM IST';
+
+      if (!name) {
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please enter your full name.';
+          errorNotice.style.display = 'block';
+        }
+        nameInput?.focus();
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        if (errorNotice) {
+          errorNotice.innerHTML = '<strong>Validation Error:</strong> Please provide a valid email address.';
+          errorNotice.style.display = 'block';
+        }
+        emailInput?.focus();
+        return;
+      }
+
+      // Loading state
+      if (errorNotice) {
+        errorNotice.style.display = 'none';
+        errorNotice.innerHTML = '';
+      }
+      if (submitBtn) submitBtn.disabled = true;
+      const originalText = btnText ? btnText.innerText : 'Confirm Registration & Send Mail ↗';
+      if (btnText) btnText.innerText = 'Sending Registration Details...';
+
+      try {
+        // 1. Try to save registration in Supabase (if available)
+        try {
+          const supabase = window.getSupabase ? window.getSupabase() : null;
+          if (supabase) {
+            await supabase.from('webinar_registrations').insert([
+              {
+                full_name: name,
+                email: email,
+                phone: phone || null,
+                webinar_topic: webinarTitle
+              }
+            ]);
+          }
+        } catch (dbErr) {
+          console.warn('Supabase webinar registration sync warning:', dbErr);
+        }
+
+        // 2. Dispatch confirmation email with webinar details
+=======
+      const context = document.getElementById('notifyModalTitle').innerText;
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+
+      if (!email) return;
+
+      // Loading state
+      errorNotice.style.display = 'none';
+      errorNotice.innerHTML = '';
+      submitBtn.disabled = true;
+      const originalText = btnText.innerText;
+      btnText.innerText = 'Sending Registration Details...';
+
+      try {
+>>>>>>> Stashed changes
+        const response = await fetch('/api/register-webinar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+<<<<<<< Updated upstream
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            webinarTitle,
+            webinarDate,
+            webinarTime
+          })
+=======
+          body: JSON.stringify({ name, email, context })
+>>>>>>> Stashed changes
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          document.getElementById('notifyForm').style.display = 'none';
+<<<<<<< Updated upstream
+          if (successNotice) {
+            successNotice.innerHTML = `
+              <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Registration Confirmed!</div>
+              <div>A confirmation email with webinar details has been sent to <strong>${escapeHtml(email)}</strong>.</div>
+              <div style="margin-top: 0.6rem; font-size: 0.88rem; color: #047857;">Please check your inbox (and spam/promotions folder).</div>
+            `;
+            successNotice.style.display = 'block';
+          }
+          if (nameInput) nameInput.value = '';
+          if (emailInput) emailInput.value = '';
+          if (phoneInput) phoneInput.value = '';
+=======
+          successNotice.innerHTML = `
+            <div style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">✓ Registration Confirmed!</div>
+            <div>A detailed confirmation and webinar syllabus has been sent to <strong>${escapeHtml(email)}</strong> via Gmail SMTP.</div>
+            <div style="margin-top: 0.6rem; font-size: 0.88rem; color: #047857;">Please check your inbox (and spam/promotions folder).</div>
+          `;
+          successNotice.style.display = 'block';
+          nameInput.value = '';
+          emailInput.value = '';
+>>>>>>> Stashed changes
+
+          setTimeout(() => {
+            closeNotifyModal();
+          }, 5000);
+        } else {
+<<<<<<< Updated upstream
+          throw new Error(data.error || 'Failed to send registration confirmation email.');
+        }
+      } catch (err) {
+        console.error('Registration error:', err);
+        if (errorNotice) {
+          errorNotice.innerHTML = `<strong>Registration Alert:</strong> ${escapeHtml(err.message)}`;
+          errorNotice.style.display = 'block';
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.innerText = originalText;
+=======
+          throw new Error(data.error || 'Failed to send registration email. Please check your credentials.');
+        }
+      } catch (err) {
+        console.error('Registration error:', err);
+        errorNotice.innerHTML = `<strong>Registration Alert:</strong> ${escapeHtml(err.message)}`;
+        errorNotice.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        btnText.innerText = originalText;
+>>>>>>> Stashed changes
+      }
+    }
+
+    function escapeHtml(str) {
+      return (str || '').replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSuggestModal();
+        closeNotifyModal();
+      }
+    });
+  </script>
+  <!-- Supabase SDK & Ethyra Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/site-header.js"></script>
+  <script src="js/auth-controller.js"></script>
 </body>
 </html>

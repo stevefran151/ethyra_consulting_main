@@ -1,0 +1,352 @@
+/* ==========================================================================
+   ETHYRA CONSULTING - AUTHENTICATION MODAL & USER PORTAL STYLES
+   ========================================================================== */
+
+/* Navbar Auth Button */
+.auth-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgba(0, 44, 139, 0.2);
+  background: rgba(255, 255, 255, 0.95);
+  color: #002c8b;
+  box-shadow: 0 4px 14px rgba(0, 44, 139, 0.08);
+  transition: all 0.25s ease;
+}
+
+.auth-nav-btn:hover {
+  background: #002c8b;
+  color: #ffffff;
+  border-color: #002c8b;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 44, 139, 0.18);
+}
+
+.auth-nav-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.auth-nav-btn:hover svg {
+  stroke: #ffffff;
+}
+
+/* User Logged In Badge */
+.auth-user-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem 0.45rem 0.55rem;
+  background: linear-gradient(135deg, rgba(0, 44, 139, 0.06), rgba(0, 154, 224, 0.12));
+  border: 1px solid rgba(0, 154, 224, 0.3);
+  border-radius: 9999px;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #002c8b;
+  transition: all 0.2s ease;
+}
+
+.auth-user-badge:hover {
+  border-color: #009ae0;
+  box-shadow: 0 4px 16px rgba(0, 154, 224, 0.2);
+  transform: translateY(-1px);
+}
+
+.auth-avatar-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #002c8b;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Modal Backdrop */
+.ethyra-auth-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(6, 14, 34, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.ethyra-auth-backdrop.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Modal Container */
+.ethyra-auth-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(6, 14, 34, 0.25), 0 0 0 1px rgba(0, 44, 139, 0.08);
+  padding: 2.25rem 2rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.ethyra-auth-backdrop.is-active .ethyra-auth-card {
+  transform: translateY(0) scale(1);
+}
+
+/* Close Button */
+.auth-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 44, 139, 0.1);
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-close-btn:hover {
+  background: #002c8b;
+  color: #ffffff;
+  border-color: #002c8b;
+  transform: rotate(90deg);
+}
+
+/* Header */
+.auth-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.auth-logo {
+  height: 38px;
+  width: auto;
+  margin-bottom: 0.85rem;
+}
+
+.auth-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #002c8b;
+  margin: 0 0 0.4rem;
+}
+
+.auth-subtitle {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Tabs */
+.auth-tabs {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 1.5rem;
+  gap: 4px;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  border: none;
+  background: transparent;
+  border-radius: 9px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-tab-btn.active {
+  background: #ffffff;
+  color: #002c8b;
+  box-shadow: 0 2px 8px rgba(0, 44, 139, 0.08);
+}
+
+/* Form Groups */
+.auth-form-group {
+  margin-bottom: 1.15rem;
+  text-align: left;
+}
+
+.auth-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.4rem;
+}
+
+.auth-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem 1rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: #0f172a;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #009ae0;
+  box-shadow: 0 0 0 3px rgba(0, 154, 224, 0.18);
+}
+
+/* Submit Button */
+.auth-submit-btn {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #002c8b, #0046c7);
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 44, 139, 0.25);
+  margin-top: 0.5rem;
+}
+
+.auth-submit-btn:hover {
+  background: linear-gradient(135deg, #001f66, #0036a1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 44, 139, 0.35);
+}
+
+.auth-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Feedback Alerts */
+.auth-alert {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-bottom: 1.15rem;
+  display: none;
+  line-height: 1.4;
+}
+
+.auth-alert-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.auth-alert-success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+/* Profile Panel (When Logged In) */
+.auth-profile-box {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.auth-profile-avatar-big {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #002c8b, #009ae0);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 154, 224, 0.25);
+}
+
+.auth-profile-email {
+  font-weight: 700;
+  color: #002c8b;
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.auth-profile-meta {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-bottom: 1.75rem;
+}
+
+.auth-signout-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1.5px solid #ef4444;
+  border-radius: 10px;
+  background: transparent;
+  color: #ef4444;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-signout-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .ethyra-auth-card {
+    padding: 2rem 1.35rem !important;
+    max-width: 95vw !important;
+    border-radius: 20px !important;
+  }
+  .auth-input {
+    font-size: 16px !important;
+  }
+}
+

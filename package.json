@@ -4,11 +4,16 @@
   "description": "Ethyra Consulting Services Website",
   "main": "index.html",
   "scripts": {
-    "start": "http-server -p 3000 -c-1 -o",
-    "dev": "http-server -p 3000 -c-1 -o",
-    "serve": "http-server -p 3000 -c-1"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js"
   },
   "devDependencies": {
     "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "nodemailer": "^10.2.1"
   }
 }

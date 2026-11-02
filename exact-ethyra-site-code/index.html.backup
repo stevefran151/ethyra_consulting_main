@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethyra Consulting Services â€“ Design. Deliver. Demonstrate.</title>
+  <meta name="description"
+    content="Good intentions are a start. The real question is, what changed? Ethyra helps organisations design stronger social programmes, understand what works, and assess the difference their social investments make.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/clean_ethyra_logo.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/landing-page.css?v=8.0">
+  <link rel="stylesheet" href="css/magnetic-button.css">
+  <link rel="stylesheet" href="css/dropping-cards.css?v=2.0">
+  <link rel="stylesheet" href="css/storybook-engine.css">
+</head>
+
+<body>
+
+  <!-- Ambient Blueprint Grid & Glow Canvas -->
+  <div class="page-bg-canvas" aria-hidden="true">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+  </div>
+
+  <!-- ==========================================================================
+       Sticky Header Navbar with Official Ethyra Logo (No Taglines)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo-link" aria-label="Ethyra Consulting Services Home">
+        <img src="assets/ethyra-official-logo.png?v=8.0" alt="Ethyra — Innovating Social Impact" class="brand-logo-img">
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav active">Home</a></li>
+          <li><a href="about-us.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">About Us</a></li>
+          <li><a href="#services" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Services</a></li>
+          <li><a href="webinar.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Webinar</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contact-us.html" class="vs-magnetic-button" aria-label="Get in Touch">
+          Get in Touch
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+            <path d="M3 8h9M8.5 4 12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         Main Hero Section: Crisp Native Typography + Camouflaged 3D Loupe Animation
+         Vector-sharp HTML typography, character-by-character typewriter loop,
+         and 100% watermark-free, seamless background camouflaged 3D animation
+         ========================================================================== -->
+    <section class="hero-stage hero-stage--landscape">
+      <!-- Top: Big Landscape 3D Storybook with Draggable Search Glass -->
+      <div class="hero-storybook-stage">
+        <div class="sb-wrap" id="sbWrap">
+          <div class="sb-stage" id="sbStage">
+            <div class="sb-3d" id="sb3d">
+              <div class="sb-tilt" id="sbTilt">
+                <div class="sb-cast ambient" aria-hidden="true"></div>
+                <div class="sb-cast contact" aria-hidden="true"></div>
+                <div class="sb-cast hair" aria-hidden="true"></div>
+                <div class="sb-book" id="sbBook"></div>
+              </div>
+              <div class="zoomwrap" id="zoomWrap" aria-hidden="true">
+                <div class="zoominner" id="zoomInner"></div>
+              </div>
+              <div class="loupe on" id="loupe">
+                <span class="grip"></span>
+                <span class="ring"><span class="lens" id="loupeLens"><span class="mag"
+                      id="loupeMag"></span></span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Hero Headline & Call to Action (Appears Below the Book) -->
+      <div class="hero-content-below">
+        <div class="hero-tag-badge">
+          <span class="pulse-indicator"></span>
+          <span>Social Impact Advisory &amp; Systems Architecture</span>
+        </div>
+
+        <h1 class="hero-title">
+          Good intentions are a start.<br>
+          <span class="hero-title-highlight">The real question is, what changed?</span>
+        </h1>
+
+        <div class="hero-cta-group">
+          <a href="contact-us.html" class="vs-magnetic-button" data-strength="0.45" data-field="85">
+            Contact Us
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <path d="M3 8h9M8.5 4 12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="#services" class="vs-magnetic-button vs-magnetic-button--ghost" data-strength="0.4" data-field="85">
+            Explore Our Work
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <path d="M3 8h9M8.5 4 12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 02: Our Perspective — Vertical Scroll Dropping Cards Stack
+         Cards: 01 (Dark Blue #002c8b), 02 (White #ffffff), 03 (Sky Blue #009ae0)
+         ========================================================================== -->
+    <section id="perspective" class="perspective-section perspective-scroll-track" aria-label="Our Perspective">
+      <div class="perspective-bg-glow" aria-hidden="true"></div>
+
+      <div class="perspective-sticky-frame">
+        <div class="perspective-container">
+
+          <!-- Perspective Header & Mandate Banner -->
+          <div class="perspective-header-block">
+            <div class="perspective-kicker-badge animate-on-scroll" data-anim="fade-down">
+              <span class="perspective-badge-num">02</span>
+              <span class="perspective-badge-dot"></span>
+              <span class="perspective-badge-text">OUR PERSPECTIVE</span>
+            </div>
+
+            <h2 class="perspective-headline animate-on-scroll" data-anim="text-reveal">
+              <span class="headline-part line-1">An activity completed</span>
+              <span class="headline-part line-2">is not the same as a</span>
+              <span class="headline-part line-3 perspective-highlight-text">
+                life changed.
+                <svg class="headline-underline" viewBox="0 0 280 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none">
+                  <path d="M3 14C70 4 190 2 277 10" stroke="url(#cyanUnderlineGrad)" stroke-width="5"
+                    stroke-linecap="round" />
+                  <defs>
+                    <linearGradient id="cyanUnderlineGrad" x1="0" y1="0" x2="280" y2="0" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#009ae0" />
+                      <stop offset="1" stop-color="#00e5ff" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+            </h2>
+
+            <div class="perspective-header-meta">
+              <!-- Bridge Callout: "At Ethyra, we work to close that gap." -->
+              <div class="perspective-bridge-banner animate-on-scroll" data-anim="bridge-pulse">
+                <div class="bridge-glow-pulse" aria-hidden="true"></div>
+                <div class="bridge-inner">
+                  <div class="bridge-icon-wrapper">
+                    <span class="bridge-pulse-ring"></span>
+                    <div class="bridge-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                        stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 12h8M13 7l5 5-5 5M6 18V6" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="bridge-copy">
+                    <span class="bridge-eyebrow">OUR MANDATE</span>
+                    <p class="bridge-statement">At Ethyra, we work to <strong>close that gap.</strong></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Palette Mode Switcher (Matching Image 2) -->
+              <div class="stack__theme-toggle" role="group" aria-label="Perspective deck palette">
+                <button class="stack__theme-btn stack__theme-btn--active" id="perspThemeColorBlock" type="button">Brand
+                  Color-Block</button>
+                <button class="stack__theme-btn" id="perspThemeWhiteDeck" type="button">Pristine White Deck</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vertical Dropping Cards Stack Deck -->
+          <div class="perspective-stack-wrapper">
+            <div class="perspective-deck stack__deck" id="perspectiveDeck" aria-label="Perspective insights deck"
+              role="region">
+
+              <!-- Card 1: The Disconnect (Dark Blue: #002c8b) -->
+              <article class="stack__card perspective-card-stack" id="persp-card-1" data-index="0"
+                style="--c:#002c8b; --ink:#ffffff; --accent:#009ae0; --badge-bg:rgba(0,154,224,0.32); --badge-color:#38bdf8; --num-color:rgba(255,255,255,0.08); --desc-color:rgba(255,255,255,0.88)">
+                <span class="stack__card-watermark">01</span>
+                <div class="stack__top">
+                  <div class="stack__img-wrap">
+                    <img src="img/drop_35.jpg" alt="The Disconnect"
+                      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581291518655-9523c932deb4?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                    <span class="stack__stage-badge">01 • THE DISCONNECT</span>
+                  </div>
+                  <ul class="stack__list">
+                    <li>Programmes meeting targets while missing root problems</li>
+                    <li>Impressive reports that mask critical gaps in the story</li>
+                    <li>Output metrics mistaken for verified social attribution</li>
+                    <li>Activities completed without lasting community change</li>
+                  </ul>
+                </div>
+                <div class="stack__bottom">
+                  <h3 class="stack__title">The Disconnect.</h3>
+                  <p class="stack__desc">A programme can meet its targets and still miss the problem it was meant to
+                    solve. A report can look impressive without telling the whole story. And numbers can show progress
+                    without explaining what made the difference.</p>
+                  <div class="card-tags-row perspective-card-tags">
+                    <span class="micro-badge">Target &ne; Problem Solved</span>
+                    <span class="micro-badge">Report &ne; Full Story</span>
+                    <span class="micro-badge">Numbers &ne; Attribution</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Card 2: Integrated Evidence (White: #ffffff with Navy #002c8b text) -->
+              <article class="stack__card perspective-card-stack" id="persp-card-2" data-index="1"
+                style="--c:#ffffff; --ink:#002c8b; --accent:#009ae0; --badge-bg:#e0f2fe; --badge-color:#002c8b; --num-color:rgba(0,44,139,0.08); --desc-color:#475569; border: 1.5px solid rgba(0,44,139,0.14); box-shadow: 0 28px 60px -15px rgba(0, 44, 139, 0.16), 0 10px 25px -10px rgba(0, 0, 0, 0.05);">
+                <span class="stack__card-watermark">02</span>
+                <div class="stack__top">
+                  <div class="stack__img-wrap">
+                    <img src="img/drop_72.jpg" alt="Integrated Evidence"
+                      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                    <span class="stack__stage-badge">02 • INTEGRATED EVIDENCE</span>
+                  </div>
+                  <ul class="stack__list">
+                    <li>Connecting community realities with rigorous analytics</li>
+                    <li>Formulating sharp questions for strategic leadership</li>
+                    <li>Generating credible, audit-grade proof of change</li>
+                    <li>De-risking social investments through verified outcomes</li>
+                  </ul>
+                </div>
+                <div class="stack__bottom">
+                  <h3 class="stack__title">Integrated Evidence.</h3>
+                  <p class="stack__desc">We connect community realities, practical strategy, and credible evidence to
+                    help organisations ask better questions, make informed decisions, and understand the outcomes of
+                    their social investments.</p>
+                  <div class="pillar-pills-row perspective-card-pills">
+                    <span class="pillar-pill">Community Realities</span>
+                    <span class="pillar-connector">&bull;</span>
+                    <span class="pillar-pill">Practical Strategy</span>
+                    <span class="pillar-connector">&bull;</span>
+                    <span class="pillar-pill">Credible Evidence</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Card 3: Meaningful Change (Sky Blue: #009ae0) -->
+              <article class="stack__card perspective-card-stack" id="persp-card-3" data-index="2"
+                style="--c:#009ae0; --ink:#ffffff; --accent:#001848; --badge-bg:rgba(0,44,139,0.32); --badge-color:#ffffff; --num-color:rgba(255,255,255,0.18); --desc-color:rgba(255,255,255,0.92)">
+                <span class="stack__card-watermark">03</span>
+                <div class="stack__top">
+                  <div class="stack__img-wrap">
+                    <img src="img/drop_34.jpg" alt="Meaningful Change"
+                      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                    <span class="stack__stage-badge">03 • MEANINGFUL CHANGE</span>
+                  </div>
+                  <ul class="stack__list">
+                    <li>Moving beyond activities delivered to durable impact</li>
+                    <li>Understanding what interventions truly achieve</li>
+                    <li>Identifying exactly for whom change takes place</li>
+                    <li>Uncovering the causal 'why' behind positive transformation</li>
+                  </ul>
+                </div>
+                <div class="stack__bottom">
+                  <h3 class="stack__title">Meaningful Change.</h3>
+                  <p class="stack__desc">Because meaningful social change requires more than activities delivered. It
+                    requires understanding what those activities achieve, for whom, and why.</p>
+                  <div class="resolution-metrics-grid perspective-card-metrics">
+                    <div class="resolution-metric-item">
+                      <span class="res-num">WHAT</span>
+                      <span class="res-label">Outcomes Achieved</span>
+                    </div>
+                    <div class="resolution-metric-item">
+                      <span class="res-num">FOR WHOM</span>
+                      <span class="res-label">Community Impact</span>
+                    </div>
+                    <div class="resolution-metric-item">
+                      <span class="res-num">WHY</span>
+                      <span class="res-label">Causal Attribution</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+
+            <!-- UI controls: Prev, Next & Progress Dots -->
+            <div class="stack__ui perspective-stack-ui">
+              <button class="stack__btn stack__btn--prev perspective-prev-btn" aria-label="Previous insight">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M10 3L5 8l5 5" />
+                </svg>
+              </button>
+              <div class="stack__dots perspective-dots" aria-hidden="true">
+                <span class="stack__dot perspective-dot stack__dot--active" data-goto="0"></span>
+                <span class="stack__dot perspective-dot" data-goto="1"></span>
+                <span class="stack__dot perspective-dot" data-goto="2"></span>
+              </div>
+              <button class="stack__btn stack__btn--next perspective-next-btn" aria-label="Next insight">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M6 3l5 5-5 5" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Scroll indicator hint -->
+            <div class="perspective-scroll-hint" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+              </svg>
+              <span>Scroll down vertically to discover</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section: Core Advisory Services
+         ========================================================================== -->
+    <section id="services" class="services-section">
+      <div class="services-container">
+        <div class="section-head">
+          <span class="section-kicker">Our Core Expertise</span>
+          <h2 class="section-title">Three Pillars of Evidence-Based Impact</h2>
+          <p class="section-subtitle">
+            We bring analytical rigour and human-centred insight to help leaders evaluate, iterate, and amplify positive
+            social transformation.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service Card 1: Programme Design -->
+          <div class="flip-card" data-service="1">
+            <div class="flip-card-inner">
+              <!-- Front Face -->
+              <div class="flip-card-front">
+                <span class="card-watermark" aria-hidden="true">01</span>
+                <h3 class="card-front-title">Programme Design</h3>
+                <p class="card-front-subhead">Start with the right problem.</p>
+                <p class="card-front-desc">
+                  We help organisations understand community priorities and translate identified needs into relevant,
+                  practical, outcome-oriented programmes.
+                </p>
+                <div class="card-footer-row">
+                  <div class="accent-color-bar" aria-hidden="true"></div>
+                </div>
+              </div>
+              <!-- Back Face -->
+              <div class="flip-card-back" style="background-image: url('assets/service-design.jpg');">
+                <div class="flip-card-back-scrim"></div>
+                <div class="flip-card-back-content">
+                  <span class="back-category-tag">IN PRACTICE</span>
+                  <blockquote class="back-highlight-quote">
+                    Root causes defined clearly before interventions are deployed, maximizing community impact from day
+                    one.
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Card 2: Monitoring & Evaluation -->
+          <div class="flip-card" data-service="2">
+            <div class="flip-card-inner">
+              <!-- Front Face -->
+              <div class="flip-card-front">
+                <span class="card-watermark" aria-hidden="true">02</span>
+                <h3 class="card-front-title">Monitoring &amp; Evaluation</h3>
+                <p class="card-front-subhead">Track progress. Verify attribution.</p>
+                <p class="card-front-desc">
+                  Deploying continuous real-time data loops, baseline to endline benchmarks, and rigorous indicator
+                  verification across diverse field geographies.
+                </p>
+                <div class="card-footer-row">
+                  <div class="accent-color-bar" aria-hidden="true"></div>
+                </div>
+              </div>
+              <!-- Back Face (Replaced 2nd image with new team outcome analysis & impact dashboard image) -->
+              <div class="flip-card-back" style="background-image: url('assets/service-eval-new.jpg');">
+                <div class="flip-card-back-scrim"></div>
+                <div class="flip-card-back-content">
+                  <span class="back-category-tag">IN PRACTICE</span>
+                  <blockquote class="back-highlight-quote">
+                    Performance data reviewed<br>with programme teams while<br>there is still time to act on<br>what it
+                    shows.
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Card 3: Social Impact Assessment -->
+          <div class="flip-card" data-service="3">
+            <div class="flip-card-inner">
+              <!-- Front Face -->
+              <div class="flip-card-front">
+                <span class="card-watermark" aria-hidden="true">03</span>
+                <h3 class="card-front-title">Social Impact<br>Assessment</h3>
+                <p class="card-front-subhead">Look beyond what was delivered.<br>Understand what changed.</p>
+                <p class="card-front-desc">
+                  We examine programme outcomes, stakeholder experiences, and available evidence to understand the
+                  significance of change and the programme's contribution.
+                </p>
+                <div class="card-footer-row">
+                  <div class="accent-color-bar" aria-hidden="true"></div>
+                </div>
+              </div>
+              <!-- Back Face (Replaced 2nd image with evaluation KPI & theory of change image) -->
+              <div class="flip-card-back" style="background-image: url('assets/service-eval.jpg');">
+                <div class="flip-card-back-scrim"></div>
+                <div class="flip-card-back-content">
+                  <span class="back-category-tag">IN PRACTICE</span>
+                  <blockquote class="back-highlight-quote">
+                    Quasi-experimental evaluations<br>and stakeholder attribution<br>proving verifiable social return on
+                    investment.
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-extra-note">
+          <p>Looking for strategic impact narrative and executive reporting? <a href="impact-communication.html">Explore
+              Impact Advisory &amp; Dashboards &rarr;</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section: Methodology (The Guiding Philosophy — Dropping Cards Stack)
+         ========================================================================== -->
+    <section id="methodology" class="methodology-section" aria-label="The Guiding Philosophy">
+      <div class="methodology-container">
+        <div class="section-head">
+          <span class="section-kicker">The Guiding Philosophy</span>
+          <h2 class="section-title">Design. Deliver. Demonstrate.</h2>
+          <p class="section-subtitle">
+            Moving beyond vanity metrics to create resilient social value backed by verifiable proof.
+          </p>
+
+          <!-- Palette Mode Switcher -->
+          <div class="stack__theme-toggle" role="group" aria-label="Palette selection">
+            <button class="stack__theme-btn stack__theme-btn--active" id="themeColorBlock" type="button">Brand
+              Color-Block</button>
+            <button class="stack__theme-btn" id="themeImageCards" type="button">Pristine White Deck</button>
+          </div>
+        </div>
+
+        <div class="stack-wrapper">
+          <!-- Cards Deck (3 Cards for the 3 Stages) -->
+          <div class="stack__deck" aria-label="Interactive cards deck" role="region">
+
+            <!-- Card 1: Stage 1 (Deep Navy #002c8b from Swatch 1) -->
+            <article class="stack__card" id="card-1" data-index="0"
+              style="--c:#002c8b; --ink:#ffffff; --accent:#009ae0; --badge-bg:rgba(0,154,224,0.32); --badge-color:#38bdf8; --num-color:rgba(255,255,255,0.08); --desc-color:rgba(255,255,255,0.85)">
+              <span class="stack__card-watermark">01</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_35.jpg" alt="Design with Precision"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581291518655-9523c932deb4?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                  <span class="stack__stage-badge">Stage 1</span>
+                </div>
+                <ul class="stack__list">
+                  <li>Systemic problem formulation</li>
+                  <li>True causal lever mapping</li>
+                  <li>Theory of change alignment</li>
+                  <li>Pre-capital de-risking</li>
+                </ul>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">Design with Precision.</h3>
+                <p class="stack__desc">We anchor every project in systemic problem formulation, identifying true causal
+                  levers rather than superficial symptoms before capital is committed.</p>
+              </div>
+            </article>
+
+            <!-- Card 2: Stage 2 (Vibrant Cyan #009ae0 from Swatch 2) -->
+            <article class="stack__card" id="card-2" data-index="1"
+              style="--c:#009ae0; --ink:#ffffff; --accent:#002c8b; --badge-bg:rgba(0,44,139,0.32); --badge-color:#ffffff; --num-color:rgba(255,255,255,0.18); --desc-color:rgba(255,255,255,0.92)">
+              <span class="stack__card-watermark">02</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_34.jpg" alt="Deliver with Agility"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                  <span class="stack__stage-badge">Stage 2</span>
+                </div>
+                <ul class="stack__list">
+                  <li>Continuous monitoring systems</li>
+                  <li>Early-warning threshold alerts</li>
+                  <li>Agile field team pivots</li>
+                  <li>Mid-flight intervention tuning</li>
+                </ul>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">Deliver with Agility.</h3>
+                <p class="stack__desc">Continuous monitoring systems provide early-warning signals, enabling field teams
+                  to pivot dynamically and optimize interventions mid-flight.</p>
+              </div>
+            </article>
+
+            <!-- Card 3: Stage 3 (Crisp White Card with Navy & Cyan Accents) -->
+            <article class="stack__card" id="card-3" data-index="2"
+              style="--c:#ffffff; --ink:#002c8b; --accent:#009ae0; --badge-bg:#e0f2fe; --badge-color:#009ae0; --num-color:rgba(0,44,139,0.08); --desc-color:#475569">
+              <span class="stack__card-watermark">03</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_73.jpg" alt="Demonstrate with Rigour"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                  <span class="stack__stage-badge">Stage 3</span>
+                </div>
+                <ul class="stack__list">
+                  <li>Counterfactual benchmarking</li>
+                  <li>Rigorous attribution models</li>
+                  <li>Verifiable proof points</li>
+                  <li>Audit-grade social reporting</li>
+                </ul>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">Demonstrate with Rigour.</h3>
+                <p class="stack__desc">We answer the ultimate question — <em>what changed?</em> — with rigorous
+                  attribution analysis, clear counterfactuals, and transparent data proof.</p>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- UI controls: Prev, Next & Progress Dots -->
+          <div class="stack__ui">
+            <button class="stack__btn stack__btn--prev" aria-label="Previous stage">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M10 3L5 8l5 5" />
+              </svg>
+            </button>
+            <div class="stack__dots" aria-hidden="true">
+              <span class="stack__dot stack__dot--active"></span>
+              <span class="stack__dot"></span>
+              <span class="stack__dot"></span>
+            </div>
+            <button class="stack__btn stack__btn--next" aria-label="Next stage">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M6 3l5 5-5 5" />
+              </svg>
+            </button>
+          </div>
+
+          <span class="stack__hint">Drag card down or use arrow keys to navigate</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section: Call to Action Banner
+         ========================================================================== -->
+    <section id="impact" class="cta-section">
+      <div class="cta-banner-box">
+        <div class="cta-inner">
+          <h2 class="cta-heading">Ready to measure what truly changed?</h2>
+          <p class="cta-subtext">
+            Partner with Ethyra to architect verifiable impact strategies, robust M&E frameworks, and data-backed proof
+            for your social programmes.
+          </p>
+          <a href="contact-us.html" class="vs-magnetic-button"
+            style="--vs-magnetic-button-bg: #ffffff; --vs-magnetic-button-ink: #002c8b; --vs-magnetic-button-flood: #38bdf8; --vs-magnetic-button-flood-ink: #001848; --vs-magnetic-button-font-size: 1.02rem;">
+            Schedule an Advisory Session
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <path d="M3 8h9M8.5 4 12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Global Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <a href="index.html" class="brand-logo-link">
+          <img src="assets/clean_ethyra_logo.png" alt="Ethyra" class="brand-logo-img">
+        </a>
+        <p>
+          Ethyra Consulting Services helps institutions, CSR foundations, and development organisations design stronger
+          social programmes and assess the real difference their investments make.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Services</h4>
+        <ul class="footer-links">
+          <li><a href="project-design.html">Programme & Project Design</a></li>
+          <li><a href="monitoring-evaluation.html">Monitoring & Evaluation</a></li>
+          <li><a href="social-impact-assessment.html">Social Impact Assessment</a></li>
+          <li><a href="impact-communication.html">Impact Advisory & Dashboards</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="webinar.html">Webinars &amp; Masterclasses</a></li>
+          <li><a href="#methodology">Our Methodology</a></li>
+          <li><a href="#services">Case Outcomes</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:contact@ethyra.com">contact@ethyra.com</a></li>
+          <li><a href="variant-1.html">Interactive SVG Engine</a></li>
+          <li><a href="index.html">3D Video Hero Edition</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ethyra Consulting Services. All rights reserved.</p>
+      <p>Design. Deliver. Demonstrate.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/landing-page.js?v=8.0"></script>
+  <script src="js/magnetic-button.js"></script>
+  <!-- GSAP 3.12.5 from jsDelivr -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="js/dropping-cards.js?v=2.0"></script>
+  <!-- Storybook & Draggable Optical Search Glass Engine -->
+  <script src="js/storybook-engine.js"></script>
+</body>
+
+</html>

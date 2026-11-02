@@ -1,0 +1,43 @@
+/* Services section video layers. Falls back to existing images if videos are missing. */
+
+.services-section { position: relative; isolation: isolate; overflow: hidden; }
+
+.flip-card-back { overflow: hidden; }
+.flip-card-back-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.2s;
+  pointer-events: none;
+}
+.flip-card-back-video.is-ready { opacity: 1; }
+.flip-card-back-scrim, .flip-card-back-content { z-index: 2; }
+
+/* Reveal animations */
+.services-section .section-head > *,
+.services-section .flip-card {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1);
+}
+.services-section.is-revealed .section-head > *,
+.services-section.is-revealed .flip-card { opacity: 1; transform: none; }
+.services-section.is-revealed .section-head > *:nth-child(2) { transition-delay: .1s; }
+.services-section.is-revealed .section-head > *:nth-child(3) { transition-delay: .2s; }
+.services-section.is-revealed .flip-card:nth-child(1) { transition-delay: .25s; }
+.services-section.is-revealed .flip-card:nth-child(2) { transition-delay: .4s; }
+.services-section.is-revealed .flip-card:nth-child(3) { transition-delay: .55s; }
+
+/* Accent bar sweeps in */
+.services-section .accent-color-bar { transform-origin: left; transform: scaleX(0); transition: transform 1s ease .9s; }
+.services-section.is-revealed .accent-color-bar { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .services-ambient-video, .flip-card-back-video { display: none; }
+  .services-section .section-head > *,
+  .services-section .flip-card,
+  .services-section .accent-color-bar { opacity: 1; transform: none; transition: none; }
+}

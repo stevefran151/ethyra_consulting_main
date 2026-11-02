@@ -8,12 +8,16 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/clean_ethyra_logo.png">
-
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/landing-page.css?v=9.0">
+  <link rel="stylesheet" href="css/site-header.css">
+  <link rel="stylesheet" href="css/landing-page.css?v=10.0">
   <link rel="stylesheet" href="css/magnetic-button.css">
   <link rel="stylesheet" href="css/dropping-cards.css?v=3.0">
   <link rel="stylesheet" href="css/storybook-engine.css?v=2.0">
+  <link rel="stylesheet" href="css/auth-modal.css">
+
+  <!-- GSAP 3.12.5 (High Performance Animation Engine) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </head>
 <body>
 
@@ -36,7 +40,7 @@
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav active">Home</a></li>
           <li><a href="about-us.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">About Us</a></li>
-          <li><a href="#services" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Services</a></li>
+          <li><a href="services.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Services</a></li>
           <li><a href="webinar.html" class="nav-link vs-magnetic-button vs-magnetic-button--nav">Webinar</a></li>
         </ul>
       </nav>
@@ -165,13 +169,12 @@
                       </div>
                     </div>
                     <div class="bridge-copy">
-                      <span class="bridge-eyebrow">OUR MANDATE</span>
                       <p class="bridge-statement">At Ethyra, we work to <strong>close that gap.</strong></p>
                     </div>
                   </div>
                 </div>
 
-                <!-- Palette Mode Switcher (Icon Swatches Only - Text Removed) -->
+                <!-- Palette Mode Switcher (Icon Swatches Only) -->
                 <div class="stack__theme-toggle" role="group" aria-label="Perspective deck palette">
                   <button class="stack__theme-btn stack__theme-btn--active" id="perspThemeColorBlock" type="button" aria-label="Brand Color-Block">
                     <span class="theme-swatch-dot theme-swatch-dot--brand"></span>
@@ -188,101 +191,51 @@
               <div class="perspective-stack-wrapper">
                 <div class="perspective-deck stack__deck" id="perspectiveDeck" aria-label="Perspective insights deck" role="region">
               
-              <!-- Card 1: The Disconnect (Dark Blue: #002c8b) -->
+              <!-- Card 1: 01 (Dark Blue: #002c8b) -->
               <article class="stack__card perspective-card-stack" id="persp-card-1" data-index="0"
-                       style="--c:#002c8b; --ink:#ffffff; --accent:#009ae0; --badge-bg:rgba(0,154,224,0.32); --badge-color:#38bdf8; --num-color:rgba(255,255,255,0.08); --desc-color:rgba(255,255,255,0.88)">
+                       style="--c:#002c8b; --ink:#ffffff; --accent:#009ae0; --badge-bg:rgba(0,154,224,0.32); --badge-color:#38bdf8; --num-color:rgba(255,255,255,0.08); --desc-color:rgba(255,255,255,0.92)">
                 <span class="stack__card-watermark">01</span>
                 <div class="stack__top">
                   <div class="stack__img-wrap">
-                    <img src="img/drop_35.jpg" alt="The Disconnect" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581291518655-9523c932deb4?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
-                    <span class="stack__stage-badge">01 • THE DISCONNECT</span>
+                    <img src="img/drop_35.jpg" alt="Our Perspective 01" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581291518655-9523c932deb4?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
                   </div>
-                  <ul class="stack__list">
-                    <li>Programmes meeting targets while missing root problems</li>
-                    <li>Impressive reports that mask critical gaps in the story</li>
-                    <li>Output metrics mistaken for verified social attribution</li>
-                    <li>Activities completed without lasting community change</li>
-                  </ul>
                 </div>
                 <div class="stack__bottom">
-                  <h3 class="stack__title">The Disconnect.</h3>
                   <p class="stack__desc">A programme can meet its targets and still miss the problem it was meant to solve. A report can look impressive without telling the whole story. And numbers can show progress without explaining what made the difference.</p>
-                  <div class="card-tags-row perspective-card-tags">
-                    <span class="micro-badge">Target &ne; Problem Solved</span>
-                    <span class="micro-badge">Report &ne; Full Story</span>
-                    <span class="micro-badge">Numbers &ne; Attribution</span>
-                  </div>
                 </div>
               </article>
 
-              <!-- Card 2: Integrated Evidence (White: #ffffff with Navy #002c8b text) -->
+              <!-- Card 2: 02 (White: #ffffff with Navy #002c8b text) -->
               <article class="stack__card perspective-card-stack" id="persp-card-2" data-index="1"
-                       style="--c:#ffffff; --ink:#002c8b; --accent:#009ae0; --badge-bg:#e0f2fe; --badge-color:#002c8b; --num-color:rgba(0,44,139,0.08); --desc-color:#475569; border: 1.5px solid rgba(0,44,139,0.14); box-shadow: 0 28px 60px -15px rgba(0, 44, 139, 0.16), 0 10px 25px -10px rgba(0, 0, 0, 0.05);">
+                       style="--c:#ffffff; --ink:#002c8b; --accent:#009ae0; --badge-bg:#e0f2fe; --badge-color:#002c8b; --num-color:rgba(0,44,139,0.08); --desc-color:#334155; border: 1.5px solid rgba(0,44,139,0.14); box-shadow: 0 28px 60px -15px rgba(0, 44, 139, 0.16), 0 10px 25px -10px rgba(0, 0, 0, 0.05);">
                 <span class="stack__card-watermark">02</span>
                 <div class="stack__top">
                   <div class="stack__img-wrap">
-                    <img src="img/drop_72.jpg" alt="Integrated Evidence" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
-                    <span class="stack__stage-badge">02 • INTEGRATED EVIDENCE</span>
+                    <img src="img/drop_72.jpg" alt="Our Perspective 02" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
                   </div>
-                  <ul class="stack__list">
-                    <li>Connecting community realities with rigorous analytics</li>
-                    <li>Formulating sharp questions for strategic leadership</li>
-                    <li>Generating credible, audit-grade proof of change</li>
-                    <li>De-risking social investments through verified outcomes</li>
-                  </ul>
                 </div>
                 <div class="stack__bottom">
-                  <h3 class="stack__title">Integrated Evidence.</h3>
                   <p class="stack__desc">We connect community realities, practical strategy, and credible evidence to help organisations ask better questions, make informed decisions, and understand the outcomes of their social investments.</p>
-                  <div class="pillar-pills-row perspective-card-pills">
-                    <span class="pillar-pill">Community Realities</span>
-                    <span class="pillar-connector">&bull;</span>
-                    <span class="pillar-pill">Practical Strategy</span>
-                    <span class="pillar-connector">&bull;</span>
-                    <span class="pillar-pill">Credible Evidence</span>
-                  </div>
                 </div>
               </article>
 
-              <!-- Card 3: Meaningful Change (Sky Blue: #009ae0) -->
+              <!-- Card 3: 03 (Sky Blue: #009ae0) -->
               <article class="stack__card perspective-card-stack" id="persp-card-3" data-index="2"
-                       style="--c:#009ae0; --ink:#ffffff; --accent:#001848; --badge-bg:rgba(0,44,139,0.32); --badge-color:#ffffff; --num-color:rgba(255,255,255,0.18); --desc-color:rgba(255,255,255,0.92)">
+                       style="--c:#009ae0; --ink:#ffffff; --accent:#001848; --badge-bg:rgba(0,44,139,0.32); --badge-color:#ffffff; --num-color:rgba(255,255,255,0.18); --desc-color:rgba(255,255,255,0.95)">
                 <span class="stack__card-watermark">03</span>
                 <div class="stack__top">
                   <div class="stack__img-wrap">
-                    <img src="img/drop_34.jpg" alt="Meaningful Change" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
-                    <span class="stack__stage-badge">03 • MEANINGFUL CHANGE</span>
+                    <img src="img/drop_34.jpg" alt="Our Perspective 03" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
                   </div>
-                  <ul class="stack__list">
-                    <li>Moving beyond activities delivered to durable impact</li>
-                    <li>Understanding what interventions truly achieve</li>
-                    <li>Identifying exactly for whom change takes place</li>
-                    <li>Uncovering the causal 'why' behind positive transformation</li>
-                  </ul>
                 </div>
                 <div class="stack__bottom">
-                  <h3 class="stack__title">Meaningful Change.</h3>
                   <p class="stack__desc">Because meaningful social change requires more than activities delivered. It requires understanding what those activities achieve, for whom, and why.</p>
-                  <div class="resolution-metrics-grid perspective-card-metrics">
-                    <div class="resolution-metric-item">
-                      <span class="res-num">WHAT</span>
-                      <span class="res-label">Outcomes Achieved</span>
-                    </div>
-                    <div class="resolution-metric-item">
-                      <span class="res-num">FOR WHOM</span>
-                      <span class="res-label">Community Impact</span>
-                    </div>
-                    <div class="resolution-metric-item">
-                      <span class="res-num">WHY</span>
-                      <span class="res-label">Causal Attribution</span>
-                    </div>
-                  </div>
                 </div>
               </article>
 
             </div>
 
-            <!-- UI controls: Prev, Next in the Down & Progress Dots -->
+            <!-- UI controls: Prev, Next & Progress Dots -->
             <div class="stack__ui perspective-stack-ui">
               <button class="stack__btn stack__btn--prev perspective-prev-btn" aria-label="Previous insight">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -295,19 +248,10 @@
                 <span class="stack__dot perspective-dot" data-goto="2"></span>
               </div>
               <button class="stack__btn stack__btn--next perspective-next-btn stack__btn--down" aria-label="Next insight">
-                <span>Next</span>
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M6 3l5 5-5 5"/>
                 </svg>
               </button>
-            </div>
-
-            <!-- Scroll indicator hint -->
-            <div class="perspective-scroll-hint" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-              </svg>
-              <span>Scroll down vertically to discover</span>
             </div>
           </div>
         </div>
@@ -449,154 +393,7 @@
     </section>
 
     <!-- ==========================================================================
-         Section 04: Our Signature Methodology (The 4E Framework)
-         ========================================================================== -->
-    <section id="methodology" class="methodology-section" aria-label="Our Signature Methodology">
-      <div class="methodology-container">
-        <div class="section-head animate-on-scroll" data-anim="fade-up">
-          <span class="section-kicker">03. OUR APPROACH</span>
-          <h2 class="section-title">The 4E Framework</h2>
-          <p class="methodology-motto">Explore. Establish. Evaluate. Evolve.</p>
-          <div class="methodology-lead-text">
-            <p>Our 4E Framework reflects how we connect understanding, planning, evaluation, and learning across the programme lifecycle.</p>
-          </div>
-
-          <!-- Palette Mode Switcher (Icon Swatches Only - Text Removed) -->
-          <div class="stack__theme-toggle" role="group" aria-label="Palette selection">
-            <button class="stack__theme-btn stack__theme-btn--active" id="themeColorBlock" type="button" aria-label="Brand Color-Block">
-              <span class="theme-swatch-dot theme-swatch-dot--brand"></span>
-            </button>
-            <button class="stack__theme-btn" id="themeImageCards" type="button" aria-label="Pristine White Deck">
-              <span class="theme-swatch-dot theme-swatch-dot--white"></span>
-            </button>
-          </div>
-
-          <!-- Methodology Footer Text & Link (In Left Column) -->
-          <div class="methodology-bottom-meta">
-            <p class="framework-iterative-text">The four stages are connected rather than strictly linear. New evidence may reveal a different need, challenge an earlier assumption, or call for a revised programme design.</p>
-            <p class="framework-iterative-text" style="margin-top: 10px;">The framework provides structure while allowing each engagement to respond to the realities of its context.</p>
-            <a href="about-us.html" class="framework-discover-link">
-              Discover the 4E Framework &rarr;
-            </a>
-          </div>
-        </div>
-
-        <div class="stack-wrapper">
-          <!-- Cards Deck (4 Cards for the 4 Stages) -->
-          <div class="stack__deck" id="methodologyDeck" aria-label="Interactive cards deck" role="region">
-            
-            <!-- Card 1: 01 — Explore (Deep Navy #002c8b) -->
-            <article class="stack__card" id="card-1" data-index="0"
-                     style="--c:#002c8b; --ink:#ffffff; --accent:#009ae0; --badge-bg:rgba(0,154,224,0.32); --badge-color:#38bdf8; --num-color:rgba(255,255,255,0.08); --desc-color:rgba(255,255,255,0.9)">
-              <span class="stack__card-watermark">01</span>
-              <div class="stack__top">
-                <div class="stack__img-wrap">
-                  <img src="img/drop_35.jpg" alt="01 — Explore" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581291518655-9523c932deb4?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
-                  <span class="stack__stage-badge">01 — Explore</span>
-                </div>
-                <div class="stack__card-summary">
-                  <h3 class="stack__card-subhead">Understand the context</h3>
-                  <p class="stack__desc">Understand the context, identify stakeholder perspectives, and clarify the problem that needs to be addressed.</p>
-                </div>
-              </div>
-              <div class="stack__bottom">
-                <h3 class="stack__title">01 — Explore</h3>
-                <p class="stack__tagline">Understand the context</p>
-                <p class="stack__desc-full">Understand the context, identify stakeholder perspectives, and clarify the problem that needs to be addressed.</p>
-              </div>
-            </article>
-
-            <!-- Card 2: 02 — Establish (Vibrant Cyan #009ae0) -->
-            <article class="stack__card" id="card-2" data-index="1"
-                     style="--c:#009ae0; --ink:#ffffff; --accent:#002c8b; --badge-bg:rgba(0,44,139,0.32); --badge-color:#ffffff; --num-color:rgba(255,255,255,0.18); --desc-color:rgba(255,255,255,0.95)">
-              <span class="stack__card-watermark">02</span>
-              <div class="stack__top">
-                <div class="stack__img-wrap">
-                  <img src="img/drop_72.jpg" alt="02 — Establish" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
-                  <span class="stack__stage-badge">02 — Establish</span>
-                </div>
-                <div class="stack__card-summary">
-                  <h3 class="stack__card-subhead">Define intended outcomes</h3>
-                  <p class="stack__desc">Define intended outcomes, develop a clear programme logic, and identify practical ways to deliver and measure progress.</p>
-                </div>
-              </div>
-              <div class="stack__bottom">
-                <h3 class="stack__title">02 — Establish</h3>
-                <p class="stack__tagline">Define intended outcomes</p>
-                <p class="stack__desc-full">Define intended outcomes, develop a clear programme logic, and identify practical ways to deliver and measure progress.</p>
-              </div>
-            </article>
-
-            <!-- Card 3: 03 — Evaluate (Crisp White Card with Navy & Cyan Accents) -->
-            <article class="stack__card" id="card-3" data-index="2"
-                     style="--c:#ffffff; --ink:#002c8b; --accent:#009ae0; --badge-bg:#e0f2fe; --badge-color:#002c8b; --num-color:rgba(0,44,139,0.08); --desc-color:#475569; border: 1.5px solid rgba(0,44,139,0.14); box-shadow: 0 28px 60px -15px rgba(0, 44, 139, 0.16), 0 10px 25px -10px rgba(0, 0, 0, 0.05);">
-              <span class="stack__card-watermark">03</span>
-              <div class="stack__top">
-                <div class="stack__img-wrap">
-                  <img src="img/drop_34.jpg" alt="03 — Evaluate" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
-                  <span class="stack__stage-badge">03 — Evaluate</span>
-                </div>
-                <div class="stack__card-summary">
-                  <h3 class="stack__card-subhead">Examine implementation & outcomes</h3>
-                  <p class="stack__desc">Examine implementation and outcomes using appropriate methods, while acknowledging evidence gaps and the limits of what can be concluded.</p>
-                </div>
-              </div>
-              <div class="stack__bottom">
-                <h3 class="stack__title">03 — Evaluate</h3>
-                <p class="stack__tagline">Examine implementation & outcomes</p>
-                <p class="stack__desc-full">Examine implementation and outcomes using appropriate methods, while acknowledging evidence gaps and the limits of what can be concluded.</p>
-              </div>
-            </article>
-
-            <!-- Card 4: 04 — Evolve (Midnight Blue #001848 with Cyan Accents) -->
-            <article class="stack__card" id="card-4" data-index="3"
-                     style="--c:#001848; --ink:#ffffff; --accent:#00e5ff; --badge-bg:rgba(0,229,255,0.25); --badge-color:#38bdf8; --num-color:rgba(255,255,255,0.08); --desc-color:rgba(255,255,255,0.9)">
-              <span class="stack__card-watermark">04</span>
-              <div class="stack__top">
-                <div class="stack__img-wrap">
-                  <img src="img/drop_73.jpg" alt="04 — Evolve" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
-                  <span class="stack__stage-badge">04 — Evolve</span>
-                </div>
-                <div class="stack__card-summary">
-                  <h3 class="stack__card-subhead">Refine strategies</h3>
-                  <p class="stack__desc">Use findings to refine strategies, strengthen future programme cycles, and inform decisions about what should change.</p>
-                </div>
-              </div>
-              <div class="stack__bottom">
-                <h3 class="stack__title">04 — Evolve</h3>
-                <p class="stack__tagline">Refine strategies</p>
-                <p class="stack__desc-full">Use findings to refine strategies, strengthen future programme cycles, and inform decisions about what should change.</p>
-              </div>
-            </article>
-
-          </div>
-
-          <!-- UI controls: Next button in the down, Prev & Progress Dots -->
-          <div class="stack__ui stack__ui--down">
-            <button class="stack__btn stack__btn--prev" aria-label="Previous stage">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 3L5 8l5 5"/>
-              </svg>
-            </button>
-            <div class="stack__dots" aria-hidden="true">
-              <span class="stack__dot stack__dot--active" data-goto="0"></span>
-              <span class="stack__dot" data-goto="1"></span>
-              <span class="stack__dot" data-goto="2"></span>
-              <span class="stack__dot" data-goto="3"></span>
-            </div>
-            <button class="stack__btn stack__btn--next stack__btn--down" aria-label="Next stage">
-              <span>Next</span>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 3l5 5-5 5"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         Section 05: WHY ETHYRA? (Good work needs good thinking)
+         Section 03: WHY ETHYRA? (Good work needs good thinking)
          ========================================================================== -->
     <section id="why-ethyra" class="why-ethyra-section" aria-label="Why Ethyra">
       <!-- Systems Architecture Animated SVG Background -->
@@ -629,7 +426,7 @@
       <div class="why-ethyra-container">
         
         <div class="why-ethyra-head animate-on-scroll" data-anim="fade-up">
-          <span class="why-kicker">05. WHY ETHYRA?</span>
+          <span class="why-kicker">03. WHY ETHYRA?</span>
           <h2 class="why-title">Good work needs good thinking.</h2>
           <div class="why-lead-text">
             <p>Social impact work operates in complex environments. Community needs evolve, implementation presents unexpected challenges, and outcomes are rarely explained by a single factor.</p>
@@ -829,6 +626,153 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 04: OUR APPROACH (The 4E Framework)
+         ========================================================================== -->
+    <section id="methodology" class="methodology-section" aria-label="Our Approach — The 4E Framework">
+      <div class="methodology-container">
+        <div class="section-head animate-on-scroll" data-anim="fade-up">
+          <span class="section-kicker">04. OUR APPROACH</span>
+          <h2 class="section-title">The 4E Framework</h2>
+          <p class="methodology-motto">Explore. Establish. Evaluate. Evolve.</p>
+          <div class="methodology-lead-text">
+            <p>Our 4E Framework reflects how we connect understanding, planning, evaluation, and learning across the programme lifecycle.</p>
+          </div>
+
+          <!-- Palette Mode Switcher (Icon Swatches Only - Text Removed) -->
+          <div class="stack__theme-toggle" role="group" aria-label="Palette selection">
+            <button class="stack__theme-btn stack__theme-btn--active" id="themeColorBlock" type="button" aria-label="Brand Color-Block">
+              <span class="theme-swatch-dot theme-swatch-dot--brand"></span>
+            </button>
+            <button class="stack__theme-btn" id="themeImageCards" type="button" aria-label="Pristine White Deck">
+              <span class="theme-swatch-dot theme-swatch-dot--white"></span>
+            </button>
+          </div>
+
+          <!-- Methodology Footer Text & Link (In Left Column) -->
+          <div class="methodology-bottom-meta">
+            <p class="framework-iterative-text">The four stages are connected rather than strictly linear. New evidence may reveal a different need, challenge an earlier assumption, or call for a revised programme design.</p>
+            <p class="framework-iterative-text" style="margin-top: 10px;">The framework provides structure while allowing each engagement to respond to the realities of its context.</p>
+            <a href="about-us.html" class="framework-discover-link">
+              Discover the 4E Framework &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="stack-wrapper">
+          <!-- Cards Deck (4 Cards for the 4 Stages) -->
+          <div class="stack__deck" id="methodologyDeck" aria-label="Interactive cards deck" role="region">
+            
+            <!-- Card 1: 01 — Explore (Deep Navy #002c8b) -->
+            <article class="stack__card" id="card-1" data-index="0"
+                     style="--c:#002c8b; --ink:#ffffff; --accent:#009ae0; --badge-bg:rgba(0,154,224,0.32); --badge-color:#38bdf8; --num-color:rgba(255,255,255,0.08); --desc-color:rgba(255,255,255,0.9)">
+              <span class="stack__card-watermark">01</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_35.jpg" alt="01 — Explore" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581291518655-9523c932deb4?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                  <span class="stack__stage-badge">01 — Explore</span>
+                </div>
+                <div class="stack__card-summary">
+                  <h3 class="stack__card-subhead">Understand the context</h3>
+                  <p class="stack__desc">Understand the context, identify stakeholder perspectives, and clarify the problem that needs to be addressed.</p>
+                </div>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">01 — Explore</h3>
+                <p class="stack__tagline">Understand the context</p>
+                <p class="stack__desc-full">Understand the context, identify stakeholder perspectives, and clarify the problem that needs to be addressed.</p>
+              </div>
+            </article>
+
+            <!-- Card 2: 02 — Establish (Vibrant Cyan #009ae0) -->
+            <article class="stack__card" id="card-2" data-index="1"
+                     style="--c:#009ae0; --ink:#ffffff; --accent:#002c8b; --badge-bg:rgba(0,44,139,0.32); --badge-color:#ffffff; --num-color:rgba(255,255,255,0.18); --desc-color:rgba(255,255,255,0.95)">
+              <span class="stack__card-watermark">02</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_72.jpg" alt="02 — Establish" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                  <span class="stack__stage-badge">02 — Establish</span>
+                </div>
+                <div class="stack__card-summary">
+                  <h3 class="stack__card-subhead">Define intended outcomes</h3>
+                  <p class="stack__desc">Define intended outcomes, develop a clear programme logic, and identify practical ways to deliver and measure progress.</p>
+                </div>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">02 — Establish</h3>
+                <p class="stack__tagline">Define intended outcomes</p>
+                <p class="stack__desc-full">Define intended outcomes, develop a clear programme logic, and identify practical ways to deliver and measure progress.</p>
+              </div>
+            </article>
+
+            <!-- Card 3: 03 — Evaluate (Crisp White Card with Navy & Cyan Accents) -->
+            <article class="stack__card" id="card-3" data-index="2"
+                     style="--c:#ffffff; --ink:#002c8b; --accent:#009ae0; --badge-bg:#e0f2fe; --badge-color:#002c8b; --num-color:rgba(0,44,139,0.08); --desc-color:#475569; border: 1.5px solid rgba(0,44,139,0.14); box-shadow: 0 28px 60px -15px rgba(0, 44, 139, 0.16), 0 10px 25px -10px rgba(0, 0, 0, 0.05);">
+              <span class="stack__card-watermark">03</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_34.jpg" alt="03 — Evaluate" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                  <span class="stack__stage-badge">03 — Evaluate</span>
+                </div>
+                <div class="stack__card-summary">
+                  <h3 class="stack__card-subhead">Examine implementation & outcomes</h3>
+                  <p class="stack__desc">Examine implementation and outcomes using appropriate methods, while acknowledging evidence gaps and the limits of what can be concluded.</p>
+                </div>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">03 — Evaluate</h3>
+                <p class="stack__tagline">Examine implementation & outcomes</p>
+                <p class="stack__desc-full">Examine implementation and outcomes using appropriate methods, while acknowledging evidence gaps and the limits of what can be concluded.</p>
+              </div>
+            </article>
+
+            <!-- Card 4: 04 — Evolve (Midnight Blue #001848 with Cyan Accents) -->
+            <article class="stack__card" id="card-4" data-index="3"
+                     style="--c:#001848; --ink:#ffffff; --accent:#00e5ff; --badge-bg:rgba(0,229,255,0.25); --badge-color:#38bdf8; --num-color:rgba(255,255,255,0.08); --desc-color:rgba(255,255,255,0.9)">
+              <span class="stack__card-watermark">04</span>
+              <div class="stack__top">
+                <div class="stack__img-wrap">
+                  <img src="img/drop_73.jpg" alt="04 — Evolve" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&amp;fit=crop&amp;w=600&amp;q=80';">
+                  <span class="stack__stage-badge">04 — Evolve</span>
+                </div>
+                <div class="stack__card-summary">
+                  <h3 class="stack__card-subhead">Refine strategies</h3>
+                  <p class="stack__desc">Use findings to refine strategies, strengthen future programme cycles, and inform decisions about what should change.</p>
+                </div>
+              </div>
+              <div class="stack__bottom">
+                <h3 class="stack__title">04 — Evolve</h3>
+                <p class="stack__tagline">Refine strategies</p>
+                <p class="stack__desc-full">Use findings to refine strategies, strengthen future programme cycles, and inform decisions about what should change.</p>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- UI controls: Next button in the down, Prev & Progress Dots -->
+          <div class="stack__ui stack__ui--down">
+            <button class="stack__btn stack__btn--prev" aria-label="Previous stage">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 3L5 8l5 5"/>
+              </svg>
+            </button>
+            <div class="stack__dots" aria-hidden="true">
+              <span class="stack__dot stack__dot--active" data-goto="0"></span>
+              <span class="stack__dot" data-goto="1"></span>
+              <span class="stack__dot" data-goto="2"></span>
+              <span class="stack__dot" data-goto="3"></span>
+            </div>
+            <button class="stack__btn stack__btn--next stack__btn--down" aria-label="Next stage">
+              <span>Next</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3l5 5-5 5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1173,11 +1117,14 @@
   <!-- Scripts -->
   <script src="js/landing-page.js?v=8.0"></script>
   <script src="js/magnetic-button.js"></script>
-  <!-- GSAP 3.12.5 from jsDelivr -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="js/dropping-cards.js?v=2.0"></script>
   <!-- Storybook & Draggable Optical Search Glass Engine -->
   <script src="js/storybook-engine.js"></script>
+  <!-- Supabase SDK & Ethyra Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/site-header.js"></script>
+  <script src="js/auth-controller.js"></script>
 </body>
 </html>
 

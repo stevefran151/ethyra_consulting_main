@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 5. Interactive 3D Flip Service Cards (Click & Touch Toggle)
-  const flipCards = document.querySelectorAll('.flip-card');
+  const flipCards = document.querySelectorAll('.flip-card, .service-flip-card');
   flipCards.forEach(card => {
     // Click on flip button or card toggles flipped state
     card.addEventListener('click', (e) => {
